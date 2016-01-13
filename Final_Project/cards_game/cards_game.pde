@@ -1,8 +1,13 @@
 ArrayList<Card> cards = new ArrayList<Card>();
 void setup() {
   size(800, 600);
-  for (int i = 0; i<40; i++) {
-    Card a = new Card(i);
+  for (int i = 0; i<5; i++) {
+    Card a = new Card(100,60*i,i);
+    cards.add(a);
+  }
+  
+  for (int i = 0; i<5; i++) {
+    Card a = new Card(300,60*i,i);
     cards.add(a);
   }
 }
