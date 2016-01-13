@@ -23,6 +23,10 @@ void draw()
   
   for(int i = 0; i < people.length; i++)//check if the player is in contact with an NPC
   {
-    
+    if(p.contact(people[i].loc))
+    {
+      fill(0);
+      rect(0, 0, width, 50);
+    }
   }
 }
