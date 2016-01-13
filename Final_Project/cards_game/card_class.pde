@@ -4,17 +4,20 @@ class Card
   int id;
   PVector pos = new PVector();
   
+  //creates card with desired id
   Card(int tID) {
     up = false;
     id = tID;
     pos.set(random(width-40),random(height-40));
   }
   
+  //flips the card
   void flip() {
     up = !up;
     return;
   }
   
+  //for now it just shows its number, but this should at some point change
   void display() {
     fill(255);
     rect(pos.x,pos.y,40,40);
@@ -25,4 +28,5 @@ class Card
     }
     return;
   }
+  
 }
