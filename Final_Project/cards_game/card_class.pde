@@ -11,6 +11,12 @@ class Card
     pos.set(random(width-40),random(height-40));
   }
   
+  Card(float x; float y; int tID) {
+    up = false;
+    id = tID;
+    pos.set(x,y);
+  }
+  
   //flips the card
   void flip() {
     up = !up;
