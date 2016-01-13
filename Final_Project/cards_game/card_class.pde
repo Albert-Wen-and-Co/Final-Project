@@ -25,14 +25,21 @@ class Card
   
   //for now it just shows its number, but this should at some point change
   void display() {
-    fill(255);
-    rect(pos.x,pos.y,40,40);
     if(up) {
+      fill(255);
+      rect(pos.x,pos.y,40,40);
       textAlign(CENTER);
       fill(0);
       text(id,pos.x+20,pos.y+20);
     }
+    else {
+      fill(255,0,0);
+      rect(pos.x,pos.y,40,40);
+    }
     return;
   }
   
+  boolean touches(float x,float y) {
+    return x>pos.x&&x<pos.x+40&&y>pos.y&&y<pos.y+40;
+  }
 }
