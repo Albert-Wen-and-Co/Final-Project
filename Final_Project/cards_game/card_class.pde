@@ -42,4 +42,8 @@ class Card
   boolean touches(float x,float y) {
     return x>pos.x&&x<pos.x+40&&y>pos.y&&y<pos.y+40;
   }
+  
+  boolean equals(Card a) {
+    return a.id == id;
+  }
 }
