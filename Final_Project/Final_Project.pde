@@ -1,6 +1,7 @@
 Charact p;//declare variables
 NPC[] people = new NPC[5];
 Item[] inventory = new Item[5];
+PImage test;
 void setup()
 {
   size(1200, 800);//set up canvas size
@@ -10,15 +11,18 @@ void setup()
   people[2] = new NPC(200, 400);
   people[3] = new NPC(150, 300);
   people[4] = new NPC(900, 500);
+  test = loadImage("new_item.png");
   for(int i = 0; i < inventory.length; i++)
   {
-    inventory[i] = new Item(null);
+    inventory[i] = new Item(test);
   }
 }
 
 void draw()
 {
-  background(100, 200, 100);//draw the background
+  background(100, 200, 100);//draw the background and sidebar
+  fill(150);
+  rect(1050, 0, width, height);
   
   p.display();
   p.move();
@@ -34,6 +38,7 @@ void draw()
     {
       fill(0);//replace this with something that starts a minigame
       rect(0, 0, width, 50);
+      inventory[i].have = true;
     }
   }
   

@@ -11,6 +11,6 @@ class Item
   
   void display(float x, float y)
   {
-    image(appearance, x, y);
+    image(appearance, x, y, 50, 50);
   }
 }
