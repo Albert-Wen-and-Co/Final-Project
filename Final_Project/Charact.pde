@@ -18,16 +18,16 @@ class Charact {
       switch(keyCode)
       {
         case UP:
-          loc.y -= 4;
+          loc.y -= 3;
           break;
         case DOWN:
-          loc.y += 4;
+          loc.y += 3;
           break;
         case LEFT:
-          loc.x -= 4;
+          loc.x -= 3;
           break;
         case RIGHT:
-          loc.x += 4;
+          loc.x += 3;
       }
     }
   }
