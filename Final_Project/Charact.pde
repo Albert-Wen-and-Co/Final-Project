@@ -18,16 +18,28 @@ class Charact {
       switch(keyCode)
       {
         case UP:
-          loc.y -= 3;
+          if(loc.y > diam/2)
+          {
+            loc.y -= 3;
+          }
           break;
         case DOWN:
-          loc.y += 3;
+          if(loc.y < height - diam/2)
+          {
+            loc.y += 3;
+          }
           break;
         case LEFT:
-          loc.x -= 3;
+          if(loc.x > diam/2)
+          {
+            loc.x -= 3;
+          }
           break;
         case RIGHT:
-          loc.x += 3;
+          if(loc.x < 1050 - diam/2)
+          {
+            loc.x += 3;
+          }
       }
     }
   }
