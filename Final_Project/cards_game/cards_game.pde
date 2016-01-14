@@ -1,4 +1,6 @@
 ArrayList<Card> cards = new ArrayList<Card>();
+ArrayList<Integer> faceUpID = new ArrayList<Integer>();
+ArrayList<Integer> faceUpInd = new ArrayList<Integer>();
 int moves = 0;
 void setup() {
   size(800, 600);
@@ -16,10 +18,31 @@ void setup() {
 
 void draw() {
   background(0);
+  
+  //display of cards
   for (int i = cards.size()-1; i >=0; i--) {
     Card c = cards.get(i);
     c.display();
   }
+  
+  //test if the two cards face up are same. If they are, then both cards are removed from original arraylist.
+  if (faceUpID.size() >=2) {
+    if (faceUpID.get(0).equals(faceUpID.get(1))) {
+      int a = faceUpInd.get(1).intValue();
+      int b = faceUpInd.get(0).intValue();
+      if (a>b) {
+        cards.remove(a);
+        cards.remove(b);
+      }
+      else {
+        cards.remove(b);
+        cards.remove(a);
+      }
+    }
+    faceUpID.clear();
+    faceUpInd.clear();
+  }
+    println(faceUpInd.size());
 }
 
 void mouseClicked() {
@@ -36,6 +59,9 @@ void mouseClicked() {
       }
       c.flip();
       moves+=1;
+      //adds c's info to these two arraylists after flipping.
+      faceUpID.add(c.id);
+      faceUpInd.add(i);
     }
-  }
+  } 
 }
