@@ -1,36 +1,32 @@
-float playerX, playerY;
+Charact p;//declare variables
+NPC[] people = new NPC[2];
 void setup()
 {
-  size(1200, 800);
-  playerX = width/2;
-  playerY = height/2;
+  size(1200, 800);//set up canvas size
+  p = new Charact(width/2, height/2);//initialize variables
+  people[0] = new NPC(100, 100);
+  people[1] = new NPC(800, 100);
 }
 
 void draw()
 {
-  background(100, 200, 100);
+  background(100, 200, 100);//draw the background
   
-  fill(250, 50, 50);
-  stroke(0);
-  ellipse(playerX, playerY, 40, 40);
+  p.display();
   
-  if(keyPressed)
+  p.move();
+  
+  for(int i = 0; i < people.length; i++)//draw each NPC
   {
-    switch(keyCode)
+    people[i].display();
+  }
+  
+  for(int i = 0; i < people.length; i++)//check if the player is in contact with an NPC
+  {
+    if(p.contact(people[i].loc))
     {
-      case UP:
-        playerY -= 4;
-        break;
-      case DOWN:
-        playerY += 4;
-        break;
-      case LEFT:
-        playerX -= 4;
-        break;
-      case RIGHT:
-        playerX += 4;
+      fill(0);
+      rect(0, 0, width, 50);
     }
   }
-  
-  
-  }
+}
