@@ -1,8 +1,11 @@
 class Block{
-  PVector loc, wid,hei;
+  PVector loc;
+  float wid,hei;
   
   Block(float x, float y){
     loc = new PVector(x,y);
+    wid = 200;
+    hei = 100;
   }
   
   void display(){

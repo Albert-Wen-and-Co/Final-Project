@@ -36,8 +36,9 @@ class Dodge {
   }
 
   void score() {
-    if (loc.dist(other) <= diam/2)
+    if (isInContactWith(p.loc))
     {
       sc=sc-1;
     }
+  }
 }
