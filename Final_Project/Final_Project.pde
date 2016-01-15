@@ -2,6 +2,7 @@ Charact p;//declare variables
 NPC[] people = new NPC[5];
 Item[] inventory = new Item[5];
 PImage test;
+boolean setupFlag;
 void setup()
 {
   size(1200, 800);//set up canvas size
@@ -16,6 +17,7 @@ void setup()
   {
     inventory[i] = new Item(test);
   }
+  setupFlag = false;
 }
 
 void draw()
@@ -36,6 +38,15 @@ void draw()
   {
     if(p.contact(people[i].loc))
     {
+      switch(i)
+      {
+        case 0:
+          if(!setupFlag){
+            cardsSetup();
+            setupFlag = true;
+          }
+          cardsDraw();
+      }
       fill(0);//replace this with something that starts a minigame
       rect(0, 0, width, 50);
       inventory[i].have = true;

@@ -45,9 +45,7 @@ class Charact {
   }
   
   boolean contact(PVector loc2) {
-    if(loc.dist(loc2) < diam) {
-      return true;
-    } return false;
+    return loc.dist(loc2) < diam;
   }
     
 }
