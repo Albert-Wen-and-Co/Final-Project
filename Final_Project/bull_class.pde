@@ -31,9 +31,9 @@ class Bulls {
     acc=.1;
   }
 
-  boolean isInContactWith(PVector c) {
+  boolean isInContactWith(Charact ch) {
     //if the bull touches the character,it will return to the top
-    if (loc.dist(c) <= diam/2+c.diam/2) {
+    if (loc.dist(ch.loc) <= diam/2+ch.diam/2) {
       return true;
     } else {
       return false;
