@@ -1,5 +1,5 @@
 class Dodge {
-  PVector loc
+  PVector loc;
   PVector vel;
   float diam=20;
   float acc=.08;
@@ -37,6 +37,7 @@ class Dodge {
 
   void score() {
     if (loc.dist(other) <= diam/2)
+    {
       sc=sc-1;
     }
 }

@@ -1,4 +1,4 @@
-Class Block{
+class Block{
   PVector loc, wid,hei;
   
   Block(float x, float y){
@@ -11,9 +11,6 @@ Class Block{
   }
   
   void move(){
-    return true;
-  } else {
-    return false;
   }
     
 }
