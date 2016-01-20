@@ -85,7 +85,6 @@ void gameScreen(){
       }
     }
   }
-  
   for(int i = 0; i < inventory.size(); i++)
   {
     Item tempItem = inventory.get(i);
