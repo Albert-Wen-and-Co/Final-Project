@@ -34,15 +34,15 @@ void cardsDraw() {
         Card d = cards.get(j);
         if (d.id == faceUp.get(0).id) {
           cards.remove(j);
-          //if(cards.size() == 0){
-          //  return false;
-          //}
+          if(cards.size() == 0){
+            inventory.add(possibleItems[0]);
+            gameScreen = 1;
+          }
         }
       }
     }
   }
   faceUp.clear();
-  //return true;
 }
 
 void mouseClicked() {

@@ -47,6 +47,9 @@ void draw()
   } else if (gameScreen == 2) {
     gameOverScreen();
   }
+  else if (gameScreen == 3) {
+    cardsDraw();
+  }
 }
 
 void initScreen(){ 
@@ -81,7 +84,12 @@ void gameScreen(){
       rect(0, 0, width, 50);
       if(!hasItem(i))
       {
-        inventory.add(possibleItems[i]);
+        switch(i)
+        {
+          case 0:
+            cardsSetup();
+            gameScreen = 3;
+        }
       }
     }
   }
