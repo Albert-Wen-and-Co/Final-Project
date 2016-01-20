@@ -16,16 +16,16 @@ int gameScreen=0; //the correct screen is determined by the value of the variabl
 
 void setup() {
   size(1200, 800);//set up canvas size
-  
+
   font=loadFont("HVDBodedo.vlw"); //load fonts and images
   character=loadImage("character.png");
-  character.resize(60,50);
+  character.resize(60, 50);
   logo=loadImage("mapquest(HVD).png");
   map=loadImage("mapbackground.jpg");
-  map.resize(1200,800);
+  map.resize(1200, 800);
   imageMode(CENTER);
-  
-  
+
+
   p = new Charact(width/2, height/2);//initialize variables
   people[0] = new NPC(100, 100);
   people[1] = new NPC(800, 100);
@@ -50,19 +50,24 @@ void draw()
   }
 }
 
- void initScreen(){ 
+void initScreen() { 
   fill(255);
-  rect(0,0,1200,800);
-  image(logo, width/2,300);
+  rect(0, 0, 1200, 800);
+  image(logo, width/2, 300);
   fill(0);
-  textFont(font, 35);
-  text("click anywhere to start!", width/2, 500);
+  textFont(font,25);
+  text("INSTRUCTIONS: use the arrow keys to travel around the map ", width/2, 500);
+  text("and play the minigames at each location to collect the keys.", width/2, 530);
+  text("collect all keys to unlock the temple and win the game!", width/2, 560);
+  fill(255,0,0);
+  textFont(font, 25);
+  text("click anywhere to start!", width/2, 600);
   textAlign(CENTER);
- }
-  
-  void gameScreen(){
+}
+
+void gameScreen() {
   background(0);//draw the background and sidebar
-  image(map,width/2,height/2);
+  image(map, width/2, height/2);
   fill(150);
   rect(1050, 0, width, height);
 
@@ -84,7 +89,7 @@ void draw()
     }
   }
 
-  
+
   for (int i = 0; i < inventory.length; i++)
   {
     if (inventory[i].have)
@@ -92,12 +97,12 @@ void draw()
       inventory[i].display(1100, 100 + 100 * i);
     }
   }
-  }
-  
-  void gameOverScreen(){
-  }
-  
-  void startGame() { //set variable to start the game
+}
+
+void gameOverScreen() {
+}
+
+void startGame() { //set variable to start the game
   gameScreen=1;
 }
 
