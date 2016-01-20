@@ -1,6 +1,7 @@
 Charact p;//declare variables
 NPC[] people = new NPC[5];
-Item[] inventory = new Item[5];
+Item[] possibleItems = new Item[5];
+ArrayList<Item> inventory = new ArrayList<Item>();
 PImage test;
 boolean setupFlag;
 void setup()
@@ -13,9 +14,9 @@ void setup()
   people[3] = new NPC(150, 300);
   people[4] = new NPC(900, 500);
   test = loadImage("new_item.png");
-  for(int i = 0; i < inventory.length; i++)
+  for(int i = 0; i < possibleItems.length; i++)
   {
-    inventory[i] = new Item(test);
+    possibleItems[i] = new Item(test);
   }
   setupFlag = false;
 }
@@ -49,15 +50,29 @@ void draw()
       }
       fill(0);//replace this with something that starts a minigame
       rect(0, 0, width, 50);
-      inventory[i].have = true;
+      if(!hasItem(i))
+      {
+        inventory.add(possibleItems[i]);
+      }
     }
   }
   
-  for(int i = 0; i < inventory.length; i++)
+  for(int i = 0; i < inventory.size(); i++)
   {
-    if(inventory[i].have)
+    Item tempItem = inventory.get(i);
+    tempItem.display(1100, 100 + 100 * i);
+  }
+}
+
+boolean hasItem(int index)
+{
+  for(int i = 0; i < inventory.size(); i++)
+  {
+    Item tempItem = inventory.get(i);
+    if(tempItem == possibleItems[index])
     {
-      inventory[i].display(1100, 100 + 100 * i);
+      return true;
     }
   }
+  return false;
 }
