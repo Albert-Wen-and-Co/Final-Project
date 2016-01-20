@@ -25,7 +25,6 @@ void setup() {
   map=loadImage("mapbackground.jpg");
   map.resize(1200,800);
   imageMode(CENTER);
-  
   p = new Charact(width/2, height/2);//initialize variables
   people[0] = new NPC(100, 100);
   people[1] = new NPC(800, 100);
@@ -86,7 +85,6 @@ void gameScreen(){
       }
     }
   }
-  
   for(int i = 0; i < inventory.size(); i++)
   {
     Item tempItem = inventory.get(i);
