@@ -74,7 +74,7 @@ void gameScreen() {
   p.display();
   p.move();
 
-  for (int i = 0; i < people.length; i++)//draw each NPC
+ for (int i = 0; i < people.length; i++)//draw each NPC
   {
     people[i].display();
   }
