@@ -33,9 +33,9 @@ void setup() {
   people[3] = new NPC(150, 300);
   people[4] = new NPC(900, 500);
   keys = loadImage("key.png");
-  for (int i = 0; i < inventory.length; i++)
+  for (int i = 0; i < possibleItems.length; i++)
   {
-    inventory[i] = new Item(keys);
+    possibleItems[i] = new Item(keys);
   }
 }
 
@@ -86,16 +86,6 @@ void gameScreen(){
       }
     }
   }
-
-  
-  for (int i = 0; i < inventory.length; i++)
-  {
-    if (hasItem(i))
-    {
-      inventory[i].display(1100, 100 + 100 * i);
-    }
-  }
-}
   
   for(int i = 0; i < inventory.size(); i++)
   {
