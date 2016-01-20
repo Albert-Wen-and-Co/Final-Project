@@ -1,17 +1,20 @@
 class Charact {
   PVector loc;
   float diam;
+  PImage cha = new PImage();
 
   Charact(float x, float y) {
     loc = new PVector (x, y);
     diam = 40;
+    cha = loadImage("character down.png");
+    cha.resize(60,50);
   }
 
   void display() {
     noFill();
     noStroke();
     ellipse(loc.x, loc.y, diam, diam);
-    image(character, loc.x, loc.y);
+    image(cha, loc.x, loc.y);
   }
 
   void move() {
@@ -23,26 +26,32 @@ class Charact {
         if (loc.y > diam/2)
         {
           loc.y -= 3;
+          cha = loadImage("character up.png");
+          cha.resize(60,50);
         }
         break;
       case DOWN:
         if (loc.y < height - diam/2)
         {
           loc.y += 3;
+          cha = loadImage("character down.png");
+          cha.resize(60,50);
         }
         break;
       case LEFT:
         if (loc.x > diam/2)
         {
           loc.x -= 3;
-          rotate(PI);
-          image(character, loc.x, loc.y);
+          cha = loadImage("character left.png");
+          cha.resize(50,60);
         }
         break;
       case RIGHT:
         if (loc.x < 1050 - diam/2)
         {
           loc.x += 3;
+          cha = loadImage("character right.png");
+          cha.resize(50,60);
         }
       }
     }

@@ -18,7 +18,7 @@ void setup() {
   size(1200, 800);//set up canvas size
   
   font=loadFont("HVDBodedo.vlw"); //load fonts and images
-  character=loadImage("character.png");
+  character=loadImage("character down.png");
   character.resize(60,50);
   logo=loadImage("mapquest(HVD).png");
   map=loadImage("mapbackground.jpg");
