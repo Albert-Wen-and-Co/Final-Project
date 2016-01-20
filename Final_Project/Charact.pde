@@ -8,8 +8,10 @@ class Charact {
   }
 
   void display() {
-    fill(255, 0, 0);
+    noFill();
+    noStroke();
     ellipse(loc.x, loc.y, diam, diam);
+    image(character, loc.x, loc.y);
   }
 
   void move() {
@@ -33,6 +35,8 @@ class Charact {
         if (loc.x > diam/2)
         {
           loc.x -= 3;
+          rotate(PI);
+          image(character, loc.x, loc.y);
         }
         break;
       case RIGHT:
