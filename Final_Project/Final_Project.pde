@@ -17,13 +17,13 @@ int gameScreen=0; //the correct screen is determined by the value of the variabl
 
 void setup() {
   size(1200, 800);//set up canvas size
-  
+
   font=loadFont("HVDBodedo.vlw"); //load fonts and images
   character=loadImage("character down.png");
-  character.resize(60,50);
+  character.resize(60, 50);
   logo=loadImage("mapquest(HVD).png");
   map=loadImage("mapbackground.jpg");
-  map.resize(1200,800);
+  map.resize(1200, 800);
   imageMode(CENTER);
   p = new Charact(width/2, height/2);//initialize variables
   people[0] = new NPC(115, 90);
@@ -46,25 +46,27 @@ void draw()
     gameScreen();
   } else if (gameScreen == 2) {
     gameOverScreen();
-  }
-  else if (gameScreen == 3) {
+  } else if (gameScreen == 3) {
     cardsDraw();
   }
+    else if (gameScreen == 5) {
+    fDraw();
+    }
 }
 
-void initScreen(){ 
+void initScreen() { 
   fill(255);
-  rect(0,0,1200,800);
-  image(logo, width/2,300);
+  rect(0, 0, 1200, 800);
+  image(logo, width/2, 300);
   fill(0);
   textFont(font, 35);
   text("click anywhere to start!", width/2, 500);
   textAlign(CENTER);
 }
-  
-void gameScreen(){
+
+void gameScreen() {
   background(0);//draw the background and sidebar
-  image(map,width/2,height/2);
+  image(map, width/2, height/2);
   fill(150);
   rect(1050, 0, width, height);
 
@@ -82,18 +84,20 @@ void gameScreen(){
     {
       fill(0);//replace this with something that starts a minigame
       rect(0, 0, width, 50);
-      if(!hasItem(i))
+      if (!hasItem(i))
       {
         switch(i)
         {
-          case 0:
-            cardsSetup();
-            gameScreen = 3;
+        case 0:
+          cardsSetup();
+          gameScreen = 3;
+        case 2:
+          gameScreen = 5;
         }
       }
     }
   }
-  for(int i = 0; i < inventory.size(); i++)
+  for (int i = 0; i < inventory.size(); i++)
   {
     Item tempItem = inventory.get(i);
     tempItem.display(1100, 100 + 100 * i);
@@ -102,10 +106,10 @@ void gameScreen(){
 
 boolean hasItem(int index)
 {
-  for(int i = 0; i < inventory.size(); i++)
+  for (int i = 0; i < inventory.size(); i++)
   {
     Item tempItem = inventory.get(i);
-    if(tempItem == possibleItems[index])
+    if (tempItem == possibleItems[index])
     {
       return true;
     }
@@ -113,15 +117,37 @@ boolean hasItem(int index)
   return false;
 }
 
-  void gameOverScreen(){
-  }
-  
-  void startGame() { //set variable to start the game
+void gameOverScreen() {
+}
+
+void startGame() { //set variable to start the game
   gameScreen=1;
 }
 
-public void mousePressed() { //the game will start if the mouse is pressed on the initial screen
+void mouseClicked() {
   if (gameScreen==0) {
     startGame();
+  } else if (gameScreen == 3) {
+    for (int i = cards.size()-1; i >=0; i--) {
+      Card c = cards.get(i);
+      if (c.touches(mouseX, mouseY)) { //flips card when touching
+        if (moves%2==0) { //if two cards already up, flips them over before continuing.
+          for (int j = cards.size()-1; j >=0; j--) {
+            Card d = cards.get(j);
+            if (d.up) {
+              d.flip();
+            }
+          }
+        }
+        c.flip();
+        moves+=1;
+      }
+    }
+  } else if (gameScreen ==5) {
+    fStart = true; //timer starts at 1st click
+
+    if (fTime+fStartTime/1000-millis()/1000.0>=0) { //you can't increase score after the end of the timer.
+      fScore+=1;
+    }
   }
 }
