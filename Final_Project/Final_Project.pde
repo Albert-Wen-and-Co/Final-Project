@@ -92,14 +92,27 @@ void mainScreen(){
         switch(i)
         {
           case 0:
-            cardsSetup();
-            gameScreen = 3;
+            textAlign(LEFT,TOP);
+            fill(255);
+            textSize(12);
+            text("Test your memory and ability in this challenge. Press z to accept.",0,0);
+            if (key == 'z')
+            {
+              cardsSetup();
+              gameScreen = 3;
+            }
             break;
           case 1:
             bs.gameScreenB = 0;
             gameScreen = 4;
             break;
         }
+      }
+      else {
+        textAlign(LEFT,TOP);
+        fill(255);
+        textSize(12);
+        text("Wow! You are so smart and intelligent and smart and smart. You may take my key.",0,0);
       }
     }
   }
