@@ -26,7 +26,7 @@ void setup() {
   map.resize(1200,800);
   imageMode(CENTER);
   p = new Charact(width/2, height/2);//initialize variables
-  people[0] = new NPC(100, 100);
+  people[0] = new NPC(width/2, height/2+100);
   people[1] = new NPC(800, 100);
   people[2] = new NPC(200, 400);
   people[3] = new NPC(150, 300);
@@ -87,9 +87,21 @@ void gameScreen(){
         switch(i)
         {
           case 0:
-            cardsSetup();
-            gameScreen = 3;
+            textAlign(LEFT,TOP);
+            fill(255);
+            textSize(12);
+            text("Test you're memory and ability in this challenge. Press z to accept.",0,0);
+              if (key == 'z') {
+              cardsSetup();
+              gameScreen = 3;
+              }
         }
+      }
+      else {
+        textAlign(LEFT,TOP);
+            fill(255);
+            textSize(12);
+            text("Wow! You are so smart and intelligent and smart and smart. You may take my key.",0,0);
       }
     }
   }

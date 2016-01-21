@@ -27,7 +27,8 @@ class Card
     if(up) {
       fill(255);
       rect(pos.x,pos.y,40,40);
-      textAlign(CENTER);
+      textAlign(CENTER,CENTER);
+      textSize(35);
       fill(0);
       text(id,pos.x+20,pos.y+20);
     }
