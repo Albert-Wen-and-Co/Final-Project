@@ -26,6 +26,10 @@ void fDraw() {
 
   } else { 
     text("Time Remaining: 0", width/2, height*3/4);
+    if(fScore >= fGoal && !hasItem(2))
+    {
+      inventory.add(possibleItems[2]);
+    }
   }
   }
 }

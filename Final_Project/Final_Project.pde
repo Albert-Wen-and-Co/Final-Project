@@ -172,6 +172,11 @@ void mouseClicked() {
     if (fTime+fStartTime/1000-millis()/1000.0>=0) { //you can't increase score after the end of the timer.
       fScore+=1;
     }
+    
+    if(millis() - fStartTime > 10000)
+    {
+      gameScreen = 1;
+    }
   }
   if(gameScreen == 4)
   {
