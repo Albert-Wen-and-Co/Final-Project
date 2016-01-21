@@ -26,11 +26,11 @@ void setup() {
   map.resize(1200,800);
   imageMode(CENTER);
   p = new Charact(width/2, height/2);//initialize variables
-  people[0] = new NPC(100, 100);
-  people[1] = new NPC(800, 100);
-  people[2] = new NPC(200, 400);
-  people[3] = new NPC(150, 300);
-  people[4] = new NPC(900, 500);
+  people[0] = new NPC(115, 90);
+  people[1] = new NPC(815, 275);
+  people[2] = new NPC(255, 340);
+  people[3] = new NPC(710, 595);
+  people[4] = new NPC(425, 765);
   keys = loadImage("key.png");
   for (int i = 0; i < possibleItems.length; i++)
   {

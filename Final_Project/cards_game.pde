@@ -2,13 +2,13 @@ ArrayList<Card> cards = new ArrayList<Card>();
 ArrayList<Card> faceUp = new ArrayList<Card>();
 int moves = 0;
 void cardsSetup() {
-  for (int i = 0; i<5; i++) {
-    Card a = new Card(100, 60*i, i);
+  for (int i = 0; i<7; i++) {
+    Card a = new Card(100*(i+1), 100, i);
     cards.add(a);
   }
 
-  for (int i = 0; i<5; i++) {
-    Card a = new Card(300, 60*i, i);
+  for (int i = 0; i<7; i++) {
+    Card a = new Card(100*(i+1), 200, i);
     cards.add(a);
   }
 }
