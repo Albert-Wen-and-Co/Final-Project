@@ -36,6 +36,7 @@ void setup() {
   {
     possibleItems[i] = new Item(keys);
   }
+  bs = new Bullsystem();
 }
 
 void draw()
@@ -43,12 +44,16 @@ void draw()
   if (gameScreen == 0) { //if the value of variable is #, then the coresponding screen will show
     initScreen();
   } else if (gameScreen == 1) {
-    gameScreen();
+    mainScreen();
   } else if (gameScreen == 2) {
     gameOverScreen();
   }
   else if (gameScreen == 3) {
     cardsDraw();
+  }
+  else if(gameScreen == 4)
+  {
+    bs.run();
   }
 }
 
@@ -62,7 +67,7 @@ void initScreen(){
   textAlign(CENTER);
 }
   
-void gameScreen(){
+void mainScreen(){
   background(0);//draw the background and sidebar
   image(map,width/2,height/2);
   fill(150);
@@ -89,6 +94,11 @@ void gameScreen(){
           case 0:
             cardsSetup();
             gameScreen = 3;
+            break;
+          case 1:
+            bs.gameScreenB = 0;
+            gameScreen = 4;
+            break;
         }
       }
     }
@@ -123,5 +133,14 @@ boolean hasItem(int index)
 public void mousePressed() { //the game will start if the mouse is pressed on the initial screen
   if (gameScreen==0) {
     startGame();
+  }
+  if(gameScreen == 4)
+  {
+    if (bs.gameScreenB==0) {
+      bs.startGameB();
+    }
+    else if (bs.gameScreenB==2) {
+      gameScreen = 1;
+    }
   }
 }

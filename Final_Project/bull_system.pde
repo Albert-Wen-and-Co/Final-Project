@@ -4,7 +4,7 @@ class Bullsystem {
   int scb;
   String time;
   int t;
-  int count=5;
+  int count=20;
   int interval;
   PVector mouse;
   int gameScreenB=0;
@@ -17,13 +17,17 @@ class Bullsystem {
     t = 0;
     interval=32;
     mouse = new PVector();
+    for(int i = 0; i < count; i++)
+    {
+      bull.add(new Bulls(random(width), random(height/4)));
+    }
   }
 
   void run() {
     if (gameScreenB == 0) { //if the value of variable is #, then the coresponding screen will show
       initScreenB();
     } else if (gameScreenB == 1) {
-      gameScreenB();
+      mainScreenB();
     } else if (t==0) { //when the time runs out, displat the game over screen
       gameOverScreenB();
     }
@@ -34,11 +38,13 @@ class Bullsystem {
     fill(0);
     rect(0, 0, 1200, 800);
     textFont(font, 45);
+    fill(255);
     text("move your character to dodge any oncoming objects!", width/2, 300);
-    text("get hit less than 5 times and get the key! click to start!", width/2, 300);
+    text("get hit less than 5 times and get the key! click to start!", width/2, 400);
   }
 
-  void gameScreenB() {
+  void mainScreenB() {
+    background(0);
     mouse.set(mouseX, mouseY);  //set value of mouse as mouseX,mouseY
 
     //create a scoreboard
@@ -91,9 +97,7 @@ class Bullsystem {
     gameScreenB=1;
   }
 
-  public void mousePressed() { //the game will start if the mouse is pressed on the initial screen
-    if (gameScreenB==0) {
-      startGameB();
-    }
+  void mousePressed() { //the game will start if the mouse is pressed on the initial screen
+    
   }
 } //end of bull class parentheses
