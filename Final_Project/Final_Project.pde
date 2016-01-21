@@ -19,22 +19,15 @@ void setup() {
   size(1200, 800);//set up canvas size
 
   font=loadFont("HVDBodedo.vlw"); //load fonts and images
-<<<<<<< HEAD
   character=loadImage("character.png");
   character.resize(60, 50);
-=======
   character=loadImage("character down.png");
-  character.resize(60,50);
->>>>>>> refs/remotes/origin/development
+  character.resize(60, 50);
   logo=loadImage("mapquest(HVD).png");
   map=loadImage("mapbackground.jpg");
   map.resize(1200, 800);
   imageMode(CENTER);
-<<<<<<< HEAD
 
-
-=======
->>>>>>> refs/remotes/origin/development
   p = new Charact(width/2, height/2);//initialize variables
   people[0] = new NPC(100, 100);
   people[1] = new NPC(800, 100);
@@ -59,31 +52,24 @@ void draw()
   }
 }
 
-<<<<<<< HEAD
+
 void initScreen() { 
-=======
-void initScreen(){ 
->>>>>>> refs/remotes/origin/development
   fill(255);
   rect(0, 0, 1200, 800);
   image(logo, width/2, 300);
   fill(0);
-  textFont(font,25);
+  textFont(font, 25);
   text("INSTRUCTIONS: use the arrow keys to travel around the map ", width/2, 500);
   text("and play the minigames at each location to collect the keys.", width/2, 530);
   text("collect all keys to unlock the temple and win the game!", width/2, 560);
-  fill(255,0,0);
+  fill(255, 0, 0);
   textFont(font, 25);
   text("click anywhere to start!", width/2, 600);
   textAlign(CENTER);
 }
-<<<<<<< HEAD
+
 
 void gameScreen() {
-=======
-  
-void gameScreen(){
->>>>>>> refs/remotes/origin/development
   background(0);//draw the background and sidebar
   image(map, width/2, height/2);
   fill(150);
@@ -103,50 +89,35 @@ void gameScreen(){
     {
       fill(0);//replace this with something that starts a minigame
       rect(0, 0, width, 50);
-      if(!hasItem(i))
+      if (!hasItem(i))
       {
         inventory.add(possibleItems[i]);
       }
     }
   }
-  for(int i = 0; i < inventory.size(); i++)
+  for (int i = 0; i < inventory.size(); i++)
   {
     Item tempItem = inventory.get(i);
     tempItem.display(1100, 100 + 100 * i);
   }
 }
 
-<<<<<<< HEAD
-
-  for (int i = 0; i < inventory.length; i++)
-=======
 boolean hasItem(int index)
 {
-  for(int i = 0; i < inventory.size(); i++)
->>>>>>> refs/remotes/origin/development
+  for (int i = 0; i < inventory.size(); i++)
   {
     Item tempItem = inventory.get(i);
-    if(tempItem == possibleItems[index])
+    if (tempItem == possibleItems[index])
     {
       return true;
     }
   }
-<<<<<<< HEAD
 }
 
 void gameOverScreen() {
 }
 
 void startGame() { //set variable to start the game
-=======
-  return false;
-}
-
-  void gameOverScreen(){
-  }
-  
-  void startGame() { //set variable to start the game
->>>>>>> refs/remotes/origin/development
   gameScreen=1;
 }
 
