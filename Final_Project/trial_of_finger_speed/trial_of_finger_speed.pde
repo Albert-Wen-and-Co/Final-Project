@@ -1,20 +1,28 @@
-int score =  0;
-float time = 10;
-boolean start = false;
+int score=0;
+float time=10;
+boolean start=false;
 float startTime;
+PImage origami;
+
 void setup() {
-  size(100,100);
+  size(1200, 800);
+  origami=loadImage("origami.png");
+  origami.resize(100, 100);
+  imageMode(CENTER);
 }
+
 void draw() {
-  if(!start) {
+  if (!start) {
     startTime = millis();
   }
-  background(0);
-  text(score, width/2,height/2);
-  text(time+startTime/1000-millis()/1000.0,width/2,height*3/4);
+  background(255, 217, 179);
+  textSize(55);
+  text(score, width/2, height/2);
+  text(time+startTime/1000-millis()/1000.0, width/2, 500);
 }
 
 void mouseClicked() {
   start = true;
   score+=1;
+  image(origami, mouseX, mouseY);
 }
