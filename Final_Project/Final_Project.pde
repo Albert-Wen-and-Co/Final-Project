@@ -4,7 +4,8 @@ Charact c;
 Bullsystem bs;
 Charact p;
 NPC[] people = new NPC[5];
-Item[] inventory = new Item[5];
+Item[] possibleItems = new Item[5];
+ArrayList<Item> inventory = new ArrayList<Item>();
 
 PImage keys;
 PImage character;
@@ -18,14 +19,22 @@ void setup() {
   size(1200, 800);//set up canvas size
 
   font=loadFont("HVDBodedo.vlw"); //load fonts and images
+<<<<<<< HEAD
   character=loadImage("character.png");
   character.resize(60, 50);
+=======
+  character=loadImage("character down.png");
+  character.resize(60,50);
+>>>>>>> refs/remotes/origin/development
   logo=loadImage("mapquest(HVD).png");
   map=loadImage("mapbackground.jpg");
   map.resize(1200, 800);
   imageMode(CENTER);
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> refs/remotes/origin/development
   p = new Charact(width/2, height/2);//initialize variables
   people[0] = new NPC(100, 100);
   people[1] = new NPC(800, 100);
@@ -33,9 +42,9 @@ void setup() {
   people[3] = new NPC(150, 300);
   people[4] = new NPC(900, 500);
   keys = loadImage("key.png");
-  for (int i = 0; i < inventory.length; i++)
+  for (int i = 0; i < possibleItems.length; i++)
   {
-    inventory[i] = new Item(keys);
+    possibleItems[i] = new Item(keys);
   }
 }
 
@@ -50,7 +59,11 @@ void draw()
   }
 }
 
+<<<<<<< HEAD
 void initScreen() { 
+=======
+void initScreen(){ 
+>>>>>>> refs/remotes/origin/development
   fill(255);
   rect(0, 0, 1200, 800);
   image(logo, width/2, 300);
@@ -64,8 +77,13 @@ void initScreen() {
   text("click anywhere to start!", width/2, 600);
   textAlign(CENTER);
 }
+<<<<<<< HEAD
 
 void gameScreen() {
+=======
+  
+void gameScreen(){
+>>>>>>> refs/remotes/origin/development
   background(0);//draw the background and sidebar
   image(map, width/2, height/2);
   fill(150);
@@ -85,24 +103,50 @@ void gameScreen() {
     {
       fill(0);//replace this with something that starts a minigame
       rect(0, 0, width, 50);
-      inventory[i].have = true;
+      if(!hasItem(i))
+      {
+        inventory.add(possibleItems[i]);
+      }
     }
   }
+  for(int i = 0; i < inventory.size(); i++)
+  {
+    Item tempItem = inventory.get(i);
+    tempItem.display(1100, 100 + 100 * i);
+  }
+}
 
+<<<<<<< HEAD
 
   for (int i = 0; i < inventory.length; i++)
+=======
+boolean hasItem(int index)
+{
+  for(int i = 0; i < inventory.size(); i++)
+>>>>>>> refs/remotes/origin/development
   {
-    if (inventory[i].have)
+    Item tempItem = inventory.get(i);
+    if(tempItem == possibleItems[index])
     {
-      inventory[i].display(1100, 100 + 100 * i);
+      return true;
     }
   }
+<<<<<<< HEAD
 }
 
 void gameOverScreen() {
 }
 
 void startGame() { //set variable to start the game
+=======
+  return false;
+}
+
+  void gameOverScreen(){
+  }
+  
+  void startGame() { //set variable to start the game
+>>>>>>> refs/remotes/origin/development
   gameScreen=1;
 }
 
