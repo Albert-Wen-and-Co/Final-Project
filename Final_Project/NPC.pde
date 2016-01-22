@@ -11,8 +11,8 @@ class NPC
   
   void display()
   {
-    fill(50, 50, 250);
-    stroke(0);
+    noFill();
+    noStroke();
     ellipse(loc.x, loc.y, diam, diam);
   }
 }

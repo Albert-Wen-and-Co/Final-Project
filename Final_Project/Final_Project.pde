@@ -12,6 +12,12 @@ PImage character;
 PImage logo;
 PFont font;
 PImage map;
+PImage temple1;
+PImage temple2;
+PImage temple3;
+PImage temple4;
+PImage temple5;
+PImage goaltemple;
 
 int gameScreen=0; //the correct screen is determined by the value of the variable, 0= initial screen, 1=game screen, 2=game over screen
 
@@ -24,6 +30,18 @@ void setup() {
   logo=loadImage("mapquest(HVD).png");
   map=loadImage("mapbackground.jpg");
   map.resize(1200, 800);
+  temple1=loadImage("browntemple2.png");
+  temple1.resize(100,90);
+  temple2=loadImage("redtemple2.png");
+  temple2.resize(100,90);
+  temple3=loadImage("redtemple.png");
+  temple3.resize(100,90);
+  temple4=loadImage("browntemple.png");
+  temple4.resize(100,70);
+  temple5=loadImage("graytemple.png");
+  temple5.resize(140,70);
+  goaltemple=loadImage("goaltemple.png");
+  goaltemple.resize(170,100);
   imageMode(CENTER);
 
   p = new Charact(width/2, height/2);//initialize variables
@@ -85,6 +103,13 @@ void mainScreen(){
   image(map, width/2, height/2);
   fill(150);
   rect(1050, 0, width, height);
+  
+  image(temple1, 115,90);
+  image(temple2, 815,275);
+  image(temple3, 255,340);
+  image(temple4, 710,595);
+  image(temple5, 425,765);
+  image(goaltemple, 950, 475);
 
   p.display();
   p.move();
