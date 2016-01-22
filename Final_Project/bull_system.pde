@@ -9,6 +9,7 @@ class Bullsystem {
   PVector mouse;
   int gameScreenB=0;
   float startTime=0;
+  PImage bullcharacter;
 
   Bullsystem() { 
     scb=0; //delcare and italize variable for scoring 
@@ -19,6 +20,8 @@ class Bullsystem {
     {
       bull.add(new Bulls(random(width), random(height/3)));
     }
+    bullcharacter=loadImage("characterup2.png");
+    bullcharacter.resize(60,50);
   }
 
   void run() {
@@ -38,12 +41,14 @@ class Bullsystem {
     textFont(font, 30);
     fill(255);
     textAlign(CENTER, CENTER);
-    text("Move your character to dodge any oncoming objects!", width/2, 300);
-    text("Get hit less than 5 times and get the key! Click to start!", width/2, 400);
     scb=0;
     t = 1;
     interval=30;
     startTime = millis();
+    text("move your character to dodge", width/2, 300);
+    text("any oncoming objects!", width/2,350);
+    text("get hit less than 5 times and get the key!", width/2, 400);
+    text("click to start!", width/2, 450);
   }
 
   void mainScreenB() {
@@ -59,6 +64,7 @@ class Bullsystem {
     text(scb, 610, 770); //display the score
 
     //create a timer
+    fill(255);
     textFont(font, 15);
     textAlign(CENTER);
     text("Time Remaining:", 520, 720);
@@ -68,7 +74,8 @@ class Bullsystem {
 
     t = interval-int((millis()-startTime)/1000); //the clock will count down every second from the given interval
 
-    image(character, mouseX, mouseY);
+    
+    image(bullcharacter, mouseX, mouseY);
 
     for (int i=0; i<count; i++) { //create an array
       Bulls b=bull.get(i); //get the bulls from the array
@@ -106,9 +113,5 @@ class Bullsystem {
 
   void startGameB() { //set variable to start the game
     gameScreenB=1;
-  }
-
-  void mousePressed() { //the game will start if the mouse is pressed on the initial screen
-    
   }
 } //end of bull class parentheses

@@ -12,6 +12,12 @@ PImage character;
 PImage logo;
 PFont font;
 PImage map;
+PImage temple1;
+PImage temple2;
+PImage temple3;
+PImage temple4;
+PImage temple5;
+PImage goaltemple;
 
 int gameScreen=0; //the correct screen is determined by the value of the variable, 0= initial screen, 1=game screen, 2=game over screen
 
@@ -24,13 +30,26 @@ void setup() {
   logo=loadImage("mapquest(HVD).png");
   map=loadImage("mapbackground.jpg");
   map.resize(1200, 800);
+  temple1=loadImage("browntemple2.png");
+  temple1.resize(100,70);
+  temple2=loadImage("redtemple2.png");
+  temple2.resize(100,90);
+  temple3=loadImage("redtemple.png");
+  temple3.resize(100,90);
+  temple4=loadImage("browntemple.png");
+  temple4.resize(100,70);
+  temple5=loadImage("graytemple.png");
+  temple5.resize(140,70);
+  goaltemple=loadImage("goaltemple.png");
+  goaltemple.resize(170,100);
   imageMode(CENTER);
+
   p = new Charact(width/2, height/2);//initialize variables
-  people[0] = new NPC(115, 90);
-  people[1] = new NPC(815, 275);
-  people[2] = new NPC(255, 340);
-  people[3] = new NPC(710, 595);
-  people[4] = new NPC(425, 765);
+  people[0] = new NPC(115, 90, temple1);
+  people[1] = new NPC(815, 275, temple2);
+  people[2] = new NPC(255, 340, temple3);
+  people[3] = new NPC(710, 595, temple4);
+  people[4] = new NPC(425, 765, temple5);
   keys = loadImage("key.png");
   for (int i = 0; i < possibleItems.length; i++)
   {
@@ -63,16 +82,23 @@ void initScreen() {
   background(255);
   image(logo, width/2, 300);
   fill(0);
-  textFont(font, 35);
-  text("click anywhere to start!", width/2, 500);
+  textFont(font, 25);
+  text("INSTRUCTIONS: use the arrow keys to travel around the map ", width/2, 500);
+  text("and play the minigames at each location to collect the keys.", width/2, 530);
+  text("collect all keys to unlock the temple and win the game!", width/2, 560);
+  fill(255, 0, 0);
+  textFont(font, 25);
+  text("click anywhere to start!", width/2, 600);
   textAlign(CENTER);
 }
- 
+
 void mainScreen(){
   background(0);//draw the background and sidebar
   image(map, width/2, height/2);
   fill(150);
   rect(1050, 0, width, height);
+  
+  image(goaltemple, 950, 475);
 
   p.display();
   p.move();

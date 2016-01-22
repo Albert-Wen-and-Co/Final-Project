@@ -2,17 +2,17 @@ class NPC
 {
   PVector loc;
   float diam;
+  PImage appearance;
   
-  NPC(float a, float b)
+  NPC(float a, float b, PImage p)
   {
     loc = new PVector(a, b);
     diam = 40;
+    appearance = p;
   }
   
   void display()
   {
-    fill(50, 50, 250);
-    stroke(0);
-    ellipse(loc.x, loc.y, diam, diam);
+    image(p, loc.x, loc.y);
   }
 }
