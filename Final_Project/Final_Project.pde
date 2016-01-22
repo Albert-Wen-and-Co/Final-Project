@@ -88,14 +88,14 @@ void mainScreen(){
     {
       fill(0);//replace this with something that starts a minigame
       rect(0, 0, width, 50);
+      textAlign(LEFT,TOP);
+      fill(255);
+      textSize(16);
       if (!hasItem(i))
       {
         switch(i)
         {
           case 0:
-            textAlign(LEFT,TOP);
-            fill(255);
-            textSize(16);
             text("Test your memory and ability in this challenge. Press z to accept.",8,8);
             if (key == 'z')
             {
@@ -104,9 +104,6 @@ void mainScreen(){
             }
             break;
           case 1:
-            textAlign(LEFT,TOP);
-            fill(255);
-            textSize(16);
             text("I bet you can't dodge these objects! Press z to accept.",8,8);
             if (key == 'z')
             {
@@ -115,22 +112,44 @@ void mainScreen(){
             }
             break;
           case 2:
-            textAlign(LEFT,TOP);
-            fill(255);
-            textSize(16);
             text("Do you think you have fast fingers? Press z to accept.",8,8);
             if (key == 'z')
             {
               gameScreen = 5;
             }
             break;
+          case 3:
+            if(!hasItem(3))
+            {
+              inventory.add(possibleItems[3]);
+            }
+            break;
+          case 4:
+            if(!hasItem(4))
+            {
+              inventory.add(possibleItems[4]);
+            }
+            break;
         }
       }
-      else {
-        textAlign(LEFT,TOP);
-        fill(255);
-        textSize(16);
-        text("Wow! You are so smart and intelligent and smart and smart. You may take my key.",8,8);
+      else
+      {
+        switch(i)
+        {
+          case 0:
+            text("Wow! You are so smart and intelligent and smart and smart. You may take my key.",8,8);
+            break;
+          case 1:
+            text("I am impressed by your skills! Have a key!",8,8);
+            break;
+          case 2:
+            text("Clickclickclickclickclick. Okay, I'll give you this key.",8,8);
+            break;
+          case 3:
+            break;
+          case 4:
+            break;
+        }
       }
     }
   }
@@ -160,10 +179,10 @@ boolean hasItem(int index)
 
 void gameOverScreen() {
   background(255);
-  image(logo, width/2, 300);
   fill(0);
-  textFont(font, 35);
-  text("Congratulations! You won!", width/2, 500);
+  textFont(font, 48);
+  textAlign(CENTER, CENTER);
+  text("Congratulations! You won!", width/2, height/2);
 }
 
 void startGame() { //set variable to start the game

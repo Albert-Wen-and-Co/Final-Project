@@ -4,7 +4,7 @@ class Bullsystem {
   int scb;
   String time;
   int t;
-  int count=30;
+  int count=40;
   int interval;
   PVector mouse;
   int gameScreenB=0;
@@ -17,7 +17,7 @@ class Bullsystem {
     mouse = new PVector();
     for(int i = 0; i < count; i++)
     {
-      bull.add(new Bulls(random(width), random(height/4)));
+      bull.add(new Bulls(random(width), random(height/2)));
     }
   }
 
