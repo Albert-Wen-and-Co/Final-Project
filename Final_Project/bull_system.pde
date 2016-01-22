@@ -8,6 +8,7 @@ class Bullsystem {
   int interval;
   PVector mouse;
   int gameScreenB=0;
+  PImage bullcharacter;
 
 
   Bullsystem() { 
@@ -21,6 +22,8 @@ class Bullsystem {
     {
       bull.add(new Bulls(random(width), random(height/4)));
     }
+    bullcharacter=loadImage("characterup2.png");
+    bullcharacter.resize(60,50);
   }
 
   void run() {
@@ -39,8 +42,10 @@ class Bullsystem {
     rect(0, 0, 1200, 800);
     textFont(font, 45);
     fill(255);
-    text("move your character to dodge any oncoming objects!", width/2, 300);
-    text("get hit less than 5 times and get the key! click to start!", width/2, 400);
+    text("move your character to dodge", width/2, 300);
+    text("any oncoming objects!", width/2,350);
+    text("get hit less than 5 times and get the key!", width/2, 400);
+    text("click to start!", width/2, 450);
   }
 
   void mainScreenB() {
@@ -57,7 +62,7 @@ class Bullsystem {
     text(scb, 610, 770); //display the score
 
     //create a timer
-    fill(0);
+    fill(255);
     textFont(font, 15);
     textAlign(CENTER);
     text("Time Remaining:", 550, 730);
@@ -68,7 +73,8 @@ class Bullsystem {
     t = interval-int(millis()/1000); //the clock will count down every second from the given interval
     time = nf(t, 3);
 
-    image(character, mouseX, mouseY);
+    
+    image(bullcharacter, mouseX, mouseY);
 
     for (int i=0; i<count; i++) { //create an array
       Bulls b=bull.get(i); //get the bulls from the array

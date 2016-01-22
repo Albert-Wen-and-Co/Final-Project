@@ -31,7 +31,7 @@ void setup() {
   map=loadImage("mapbackground.jpg");
   map.resize(1200, 800);
   temple1=loadImage("browntemple2.png");
-  temple1.resize(100,90);
+  temple1.resize(100,70);
   temple2=loadImage("redtemple2.png");
   temple2.resize(100,90);
   temple3=loadImage("redtemple.png");
