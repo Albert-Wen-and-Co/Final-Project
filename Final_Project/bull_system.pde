@@ -83,7 +83,7 @@ class Bullsystem {
       }
     }
     
-    if(t <= 0)
+    if(t <= 0 || scb <= -5)
     {
       gameScreenB=2;
     }

@@ -60,8 +60,7 @@ void draw()
 }
 
 void initScreen() { 
-  fill(255);
-  rect(0, 0, 1200, 800);
+  background(255);
   image(logo, width/2, 300);
   fill(0);
   textFont(font, 35);
@@ -140,6 +139,10 @@ void mainScreen(){
     Item tempItem = inventory.get(i);
     tempItem.display(1100, 100 + 100 * i);
   }
+  if(hasItem(0) && hasItem(1) && hasItem(2) && hasItem(3) && hasItem(4))
+  {
+    gameScreen = 2;
+  }
 }
 
 boolean hasItem(int index)
@@ -156,6 +159,11 @@ boolean hasItem(int index)
 }
 
 void gameOverScreen() {
+  background(255);
+  image(logo, width/2, 300);
+  fill(0);
+  textFont(font, 35);
+  text("Congratulations! You won!", width/2, 500);
 }
 
 void startGame() { //set variable to start the game
