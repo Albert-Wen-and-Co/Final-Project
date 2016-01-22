@@ -13,7 +13,10 @@ void fDraw() {
   if (!fStart) {
     fStartTime = millis();
     fill(255);
+    textAlign(CENTER);
     text("Time Alloted: 10 seconds", width/2, height*3/4);
+    fScore =  0;
+    fTime = 10;
   }
       fill(255);
   text("Goal: "+ fGoal, width/2, height*1/4);
@@ -26,7 +29,11 @@ void fDraw() {
 
   } else { 
     text("Time Remaining: 0", width/2, height*3/4);
-    if(fScore >= fGoal && !hasItem(2))
+    if(fScore < fGoal)
+    {
+      p.loc.set(width/2, height/2);
+    }
+    else if(!hasItem(2))
     {
       inventory.add(possibleItems[2]);
     }

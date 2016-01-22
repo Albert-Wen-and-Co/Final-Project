@@ -4,7 +4,7 @@ class Bullsystem {
   int scb;
   String time;
   int t;
-  int count=25;
+  int count=30;
   int interval;
   PVector mouse;
   int gameScreenB=0;
@@ -99,6 +99,7 @@ class Bullsystem {
         inventory.add(possibleItems[1]);
       }
     } else { 
+      p.loc.set(width/2, height/2);
       text("sorry, try again another time", width/2, height/2);
     }
   }

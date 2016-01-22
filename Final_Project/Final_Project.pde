@@ -100,7 +100,6 @@ void mainScreen(){
             text("Test your memory and ability in this challenge. Press z to accept.",8,8);
             if (key == 'z')
             {
-              p.loc.set(width/2, height/2);
               cardsSetup();
               gameScreen = 3;
             }
@@ -112,7 +111,6 @@ void mainScreen(){
             text("I bet you can't dodge these objects! Press z to accept.",8,8);
             if (key == 'z')
             {
-              p.loc.set(width/2, height/2);
               bs.gameScreenB = 0;
               gameScreen = 4;
             }
@@ -124,7 +122,6 @@ void mainScreen(){
             text("Do you think you have fast fingers? Press z to accept.",8,8);
             if (key == 'z')
             {
-              p.loc.set(width/2, height/2);
               gameScreen = 5;
             }
             break;
