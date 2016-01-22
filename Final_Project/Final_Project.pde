@@ -19,8 +19,6 @@ void setup() {
   size(1200, 800);//set up canvas size
 
   font=loadFont("HVDBodedo.vlw"); //load fonts and images
-  character=loadImage("character.png");
-  character.resize(60, 50);
   character=loadImage("character down.png");
   character.resize(60, 50);
   logo=loadImage("mapquest(HVD).png");
@@ -112,6 +110,7 @@ boolean hasItem(int index)
       return true;
     }
   }
+  return false;
 }
 
 void gameOverScreen() {
