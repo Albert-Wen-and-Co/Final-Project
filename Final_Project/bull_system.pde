@@ -35,11 +35,11 @@ class Bullsystem {
     //create a welcome screen
     fill(0);
     rect(0, 0, 1200, 800);
-    textFont(font, 45);
+    textFont(font, 30);
     fill(255);
     textAlign(CENTER, CENTER);
-    text("move your character to dodge any oncoming objects!", width/2, 300);
-    text("get hit less than 5 times and get the key! click to start!", width/2, 400);
+    text("Move your character to dodge any oncoming objects!", width/2, 300);
+    text("Get hit less than 5 times and get the key! Click to start!", width/2, 400);
     scb=0;
     t = 1;
     interval=30;
@@ -90,9 +90,9 @@ class Bullsystem {
   }
 
   void gameOverScreenB() {
-    if (scb>= -5) {
+    if (scb > -5) {
       textFont(font, 45);
-      text("congrats, you have recieved a KEY!", width/2, height/2);
+      text("Congrats! You have recieved a KEY!", width/2, height/2);
       textAlign(CENTER);
       if(!hasItem(1))
       {
@@ -100,7 +100,7 @@ class Bullsystem {
       }
     } else { 
       p.loc.set(width/2, height/2);
-      text("sorry, try again another time", width/2, height/2);
+      text("Sorry. Try again another time.", width/2, height/2);
     }
   }
 
