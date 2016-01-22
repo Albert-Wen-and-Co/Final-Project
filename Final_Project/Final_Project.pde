@@ -45,11 +45,11 @@ void setup() {
   imageMode(CENTER);
 
   p = new Charact(width/2, height/2);//initialize variables
-  people[0] = new NPC(115, 90, temple1);
-  people[1] = new NPC(815, 275, temple2);
-  people[2] = new NPC(255, 340, temple3);
-  people[3] = new NPC(710, 595, temple4);
-  people[4] = new NPC(425, 765, temple5);
+  people[0] = new NPC(115, 95, temple1);
+  people[1] = new NPC(815, 285, temple2);
+  people[2] = new NPC(255, 350, temple3);
+  people[3] = new NPC(710, 600, temple4);
+  people[4] = new NPC(425, 770, temple5);
   keys = loadImage("key.png");
   for (int i = 0; i < possibleItems.length; i++)
   {
@@ -98,7 +98,7 @@ void mainScreen(){
   fill(150);
   rect(1050, 0, width, height);
   
-  image(goaltemple, 950, 475);
+  image(goaltemple, 955, 445);
 
   p.display();
   p.move();
@@ -182,7 +182,7 @@ void mainScreen(){
   for (int i = 0; i < inventory.size(); i++)
   {
     Item tempItem = inventory.get(i);
-    tempItem.display(1100, 100 + 100 * i);
+    tempItem.display(1125, 100 + 90 * i);
   }
   if(hasItem(0) && hasItem(1) && hasItem(2) && hasItem(3) && hasItem(4))
   {

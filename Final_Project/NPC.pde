@@ -4,15 +4,15 @@ class NPC
   float diam;
   PImage appearance;
   
-  NPC(float a, float b, PImage p)
+  NPC(float a, float b, PImage im)
   {
     loc = new PVector(a, b);
     diam = 40;
-    appearance = p;
+    appearance = im;
   }
   
   void display()
   {
-    image(p, loc.x, loc.y);
+    image(appearance, loc.x, loc.y);
   }
 }
