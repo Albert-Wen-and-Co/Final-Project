@@ -17,7 +17,7 @@ class Bullsystem {
     mouse = new PVector();
     for(int i = 0; i < count; i++)
     {
-      bull.add(new Bulls(random(width), random(height/2)));
+      bull.add(new Bulls(random(width), random(height/3)));
     }
   }
 
