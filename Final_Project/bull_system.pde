@@ -4,7 +4,7 @@ class Bullsystem {
   int scb;
   String time;
   int t;
-  int count=5;
+  int count=25;
   int interval;
   PVector mouse;
   int gameScreenB=0;
@@ -14,16 +14,20 @@ class Bullsystem {
     scb=0; //delcare and italize variable for scoring 
 
     time="32"; //create a string and interval to later create a countdown clock
-    t = 0;
-    interval=32;
+    t = 1;
+    interval=30;
     mouse = new PVector();
+    for(int i = 0; i < count; i++)
+    {
+      bull.add(new Bulls(random(width), random(height/4)));
+    }
   }
 
   void run() {
     if (gameScreenB == 0) { //if the value of variable is #, then the coresponding screen will show
       initScreenB();
     } else if (gameScreenB == 1) {
-      gameScreenB();
+      mainScreenB();
     } else if (t==0) { //when the time runs out, displat the game over screen
       gameOverScreenB();
     }
@@ -34,17 +38,20 @@ class Bullsystem {
     fill(0);
     rect(0, 0, 1200, 800);
     textFont(font, 45);
+    fill(255);
     text("move your character to dodge any oncoming objects!", width/2, 300);
-    text("get hit less than 5 times and get the key! click to start!", width/2, 300);
+    text("get hit less than 5 times and get the key! click to start!", width/2, 400);
   }
 
-  void gameScreenB() {
+  void mainScreenB() {
+    background(0);
     mouse.set(mouseX, mouseY);  //set value of mouse as mouseX,mouseY
 
     //create a scoreboard
     fill(0);
     textFont(font, 15);
     textAlign(CENTER);
+    fill(255);
     text("Score:", 550, 765);
     textSize(45);
     text(scb, 610, 770); //display the score
@@ -75,6 +82,11 @@ class Bullsystem {
         b.reset();                           //if it does, it resets
       }
     }
+    
+    if(t == 0)
+    {
+      gameScreenB=2;
+    }
   }
 
   void gameOverScreenB() {
@@ -82,6 +94,10 @@ class Bullsystem {
       textFont(font, 45);
       text("congrats, you have recieved a KEY!", width/2, height/2);
       textAlign(CENTER);
+      if(!hasItem(1))
+      {
+        inventory.add(possibleItems[1]);
+      }
     } else { 
       text("sorry, try again another time", width/2, height/2);
     }
@@ -91,9 +107,7 @@ class Bullsystem {
     gameScreenB=1;
   }
 
-  public void mousePressed() { //the game will start if the mouse is pressed on the initial screen
-    if (gameScreenB==0) {
-      startGameB();
-    }
+  void mousePressed() { //the game will start if the mouse is pressed on the initial screen
+    
   }
 } //end of bull class parentheses
