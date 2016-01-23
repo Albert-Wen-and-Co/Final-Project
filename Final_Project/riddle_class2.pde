@@ -1,23 +1,23 @@
-int count = 3;
-float x = 100;
-float y = 500;
-ArrayList<Answer> answers = new ArrayList<Answer>();
-
-Question q = new Question(); 
-
-void riddleSetup(){
+class Answer{
+  PVector loc;
+  float wid;
   
-  q.display();
-  for (int i = 0; i < count; i ++){
-    
-    
-    answers.add(new Answer(x,y));
-
+  Answer(float x, float y){
+    loc = new PVector(x,y);
+    wid = 200;
+  }
+  
+  void display(){
+    fill(255);
+    rect(loc.x,loc.y,200,200);
+  }
+  
+  boolean touch(PVector mouse){
+    if(loc.dist(mouse) <= wid/2){
+      return true;
+    } else { return false;
+    }
   }
 }
 
-void riddleDraw(){
-  b.display(x,y);
-  
-  
 }
