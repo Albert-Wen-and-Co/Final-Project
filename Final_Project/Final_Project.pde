@@ -76,6 +76,9 @@ void draw()
   else if (gameScreen == 5) {
     fDraw();
   }
+  else if (gameScreen == 6) {
+    riddleDraw();
+  }
 }
 
 void initScreen() { 
@@ -145,9 +148,11 @@ void mainScreen(){
             }
             break;
           case 3:
-            if(!hasItem(3))
+            text("Answer these riddles and receive a prize! Press z to accept.",8,8);
+            if (key == 'z')
             {
-              inventory.add(possibleItems[3]);
+              riddleSetup();
+              gameScreen = 6;
             }
             break;
           case 4:
@@ -172,6 +177,7 @@ void mainScreen(){
             text("Clickclickclickclickclick. Okay, I'll give you this key.",8,8);
             break;
           case 3:
+            text("Congratulations, you've won a key!",8,8);
             break;
           case 4:
             break;
