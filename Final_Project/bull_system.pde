@@ -11,17 +11,18 @@ class Bullsystem {
   float startTime=0;
   PImage bullcharacter;
 
+
   Bullsystem() { 
     scb=0; //delcare and italize variable for scoring 
     t = 1;
     interval=30;
     mouse = new PVector();
-    for(int i = 0; i < count; i++)
+    for (int i = 0; i < count; i++)
     {
       bull.add(new Bulls(random(width), random(height/3)));
     }
     bullcharacter=loadImage("characterup2.png");
-    bullcharacter.resize(60,50);
+    bullcharacter.resize(60, 50);
   }
 
   void run() {
@@ -40,15 +41,15 @@ class Bullsystem {
     rect(0, 0, 1200, 800);
     textFont(font, 30);
     fill(255);
-    textAlign(CENTER, CENTER);
+    textAlign(CENTER);
+    text("move your character to dodge", width/2, 300);
+    text("any oncoming objects!", width/2, 350);
+    text("get hit less than 5 times and get the key!", width/2, 400);
+    text("click to start!", width/2, 450);
     scb=0;
     t = 1;
     interval=30;
     startTime = millis();
-    text("move your character to dodge", width/2, 300);
-    text("any oncoming objects!", width/2,350);
-    text("get hit less than 5 times and get the key!", width/2, 400);
-    text("click to start!", width/2, 450);
   }
 
   void mainScreenB() {
@@ -64,6 +65,7 @@ class Bullsystem {
     text(scb, 610, 770); //display the score
 
     //create a timer
+
     fill(255);
     textFont(font, 15);
     textAlign(CENTER);
@@ -74,7 +76,7 @@ class Bullsystem {
 
     t = interval-int((millis()-startTime)/1000); //the clock will count down every second from the given interval
 
-    
+
     image(bullcharacter, mouseX, mouseY);
 
     for (int i=0; i<count; i++) { //create an array
@@ -101,7 +103,7 @@ class Bullsystem {
       textFont(font, 45);
       text("Congrats! You have recieved a KEY!", width/2, height/2);
       textAlign(CENTER);
-      if(!hasItem(1))
+      if (!hasItem(1))
       {
         inventory.add(possibleItems[1]);
       }
