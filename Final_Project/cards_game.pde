@@ -2,15 +2,20 @@ ArrayList<Card> cards = new ArrayList<Card>();
 ArrayList<Card> faceUp = new ArrayList<Card>();
 int moves = 0;
 void cardsSetup() {
-  for (int i = 0; i<7; i++) {
-    Card a = new Card(100*(i+1), 100, i);
-    cards.add(a);
-  }
-
-  for (int i = 0; i<7; i++) {
-    Card a = new Card(100*(i+1), 200, i);
-    cards.add(a);
-  }
+  cards.add(new Card(100, 100, 5));
+  cards.add(new Card(200, 100, 4));
+  cards.add(new Card(300, 100, 1));
+  cards.add(new Card(400, 100, 2));
+  
+  cards.add(new Card(100, 200, 1));
+  cards.add(new Card(200, 200, 3));
+  cards.add(new Card(300, 200, 2));
+  cards.add(new Card(400, 200, 6));
+  
+  cards.add(new Card(100, 300, 6));
+  cards.add(new Card(200, 300, 4));
+  cards.add(new Card(300, 300, 3));
+  cards.add(new Card(400, 300, 5));
 }
 
 

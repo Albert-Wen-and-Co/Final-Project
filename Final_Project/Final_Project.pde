@@ -132,27 +132,45 @@ void mainScreen(){
           case 0:
             textAlign(LEFT,TOP);
             fill(255);
-            textSize(12);
-            text("Test your memory and ability in this challenge. Press z to accept.",0,0);
+            textSize(16);
+            text("Test your memory and ability in this challenge. Press z to accept.",8,8);
             if (key == 'z')
             {
+              p.loc.set(width/2, height/2);
               cardsSetup();
               gameScreen = 3;
             }
             break;
           case 1:
-            bs.gameScreenB = 0;
-            gameScreen = 4;
+            textAlign(LEFT,TOP);
+            fill(255);
+            textSize(16);
+            text("I bet you can't dodge these objects! Press z to accept.",8,8);
+            if (key == 'z')
+            {
+              p.loc.set(width/2, height/2);
+              bs.gameScreenB = 0;
+              gameScreen = 4;
+            }
             break;
           case 2:
-            gameScreen = 5;
+            textAlign(LEFT,TOP);
+            fill(255);
+            textSize(16);
+            text("Do you think you have fast fingers? Press z to accept.",8,8);
+            if (key == 'z')
+            {
+              p.loc.set(width/2, height/2);
+              gameScreen = 5;
+            }
+            break;
         }
       }
       else {
         textAlign(LEFT,TOP);
         fill(255);
-        textSize(12);
-        text("Wow! You are so smart and intelligent and smart and smart. You may take my key.",0,0);
+        textSize(16);
+        text("Wow! You are so smart and intelligent and smart and smart. You may take my key.",8,8);
       }
     }
   }

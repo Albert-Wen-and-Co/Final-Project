@@ -8,22 +8,24 @@ class Bullsystem {
   int interval;
   PVector mouse;
   int gameScreenB=0;
+
   PImage bullcharacter;
+
+
+  float startTime=0;
 
 
   Bullsystem() { 
     scb=0; //delcare and italize variable for scoring 
-
-    time="32"; //create a string and interval to later create a countdown clock
     t = 1;
     interval=30;
     mouse = new PVector();
-    for(int i = 0; i < count; i++)
+    for (int i = 0; i < count; i++)
     {
       bull.add(new Bulls(random(width), random(height/4)));
     }
     bullcharacter=loadImage("characterup2.png");
-    bullcharacter.resize(60,50);
+    bullcharacter.resize(60, 50);
   }
 
   void run() {
@@ -31,7 +33,7 @@ class Bullsystem {
       initScreenB();
     } else if (gameScreenB == 1) {
       mainScreenB();
-    } else if (t==0) { //when the time runs out, displat the game over screen
+    } else if (gameScreenB == 2) { //when the time runs out, displat the game over screen
       gameOverScreenB();
     }
   }
@@ -42,10 +44,15 @@ class Bullsystem {
     rect(0, 0, 1200, 800);
     textFont(font, 45);
     fill(255);
+    textAlign(CENTER);
     text("move your character to dodge", width/2, 300);
-    text("any oncoming objects!", width/2,350);
+    text("any oncoming objects!", width/2, 350);
     text("get hit less than 5 times and get the key!", width/2, 400);
     text("click to start!", width/2, 450);
+    scb=0;
+    t = 1;
+    interval=30;
+    startTime = millis();
   }
 
   void mainScreenB() {
@@ -53,27 +60,26 @@ class Bullsystem {
     mouse.set(mouseX, mouseY);  //set value of mouse as mouseX,mouseY
 
     //create a scoreboard
-    fill(0);
+    fill(255);
     textFont(font, 15);
     textAlign(CENTER);
-    fill(255);
     text("Score:", 550, 765);
     textSize(45);
     text(scb, 610, 770); //display the score
 
     //create a timer
+
     fill(255);
     textFont(font, 15);
     textAlign(CENTER);
-    text("Time Remaining:", 550, 730);
+    text("Time Remaining:", 520, 720);
     fill(255, 0, 0);
     textFont(font, 45);
     text(t, 645, 730); //display the time remaining
 
-    t = interval-int(millis()/1000); //the clock will count down every second from the given interval
-    time = nf(t, 3);
+    t = interval-int((millis()-startTime)/1000); //the clock will count down every second from the given interval
 
-    
+
     image(bullcharacter, mouseX, mouseY);
 
     for (int i=0; i<count; i++) { //create an array
@@ -88,8 +94,8 @@ class Bullsystem {
         b.reset();                           //if it does, it resets
       }
     }
-    
-    if(t == 0)
+
+    if (t <= 0)
     {
       gameScreenB=2;
     }
@@ -100,7 +106,7 @@ class Bullsystem {
       textFont(font, 45);
       text("congrats, you have recieved a KEY!", width/2, height/2);
       textAlign(CENTER);
-      if(!hasItem(1))
+      if (!hasItem(1))
       {
         inventory.add(possibleItems[1]);
       }
@@ -114,6 +120,5 @@ class Bullsystem {
   }
 
   void mousePressed() { //the game will start if the mouse is pressed on the initial screen
-    
   }
 } //end of bull class parentheses
