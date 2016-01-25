@@ -12,5 +12,6 @@ class Item
   void display(float x, float y)
   {
     image(appearance, x, y, 50, 50);
+    appearance.resize(100,100);
   }
 }

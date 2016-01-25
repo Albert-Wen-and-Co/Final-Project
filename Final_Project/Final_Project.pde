@@ -19,6 +19,7 @@ PImage temple4;
 PImage temple5;
 PImage goaltemple;
 
+
 int gameScreen=0; //the correct screen is determined by the value of the variable, 0= initial screen, 1=game screen, 2=game over screen
 
 void setup() {
@@ -31,15 +32,15 @@ void setup() {
   map=loadImage("mapbackground.jpg");
   map.resize(1200, 800);
   temple1=loadImage("browntemple2.png");
-  temple1.resize(100,70);
+  temple1.resize(95,70);
   temple2=loadImage("redtemple2.png");
   temple2.resize(100,90);
   temple3=loadImage("redtemple.png");
   temple3.resize(100,90);
   temple4=loadImage("browntemple.png");
-  temple4.resize(100,70);
-  temple5=loadImage("graytemple.png");
-  temple5.resize(140,70);
+  temple4.resize(95,70);
+  temple5=loadImage("greentemple.png");
+  temple5.resize(140,120);
   goaltemple=loadImage("goaltemple.png");
   goaltemple.resize(170,100);
   imageMode(CENTER);
@@ -132,7 +133,7 @@ void mainScreen(){
           case 0:
             textAlign(LEFT,TOP);
             fill(255);
-            textSize(16);
+            textSize(18);
             text("Test your memory and ability in this challenge. Press z to accept.",8,8);
             if (key == 'z')
             {
@@ -144,7 +145,7 @@ void mainScreen(){
           case 1:
             textAlign(LEFT,TOP);
             fill(255);
-            textSize(16);
+            textSize(18);
             text("I bet you can't dodge these objects! Press z to accept.",8,8);
             if (key == 'z')
             {
@@ -156,7 +157,7 @@ void mainScreen(){
           case 2:
             textAlign(LEFT,TOP);
             fill(255);
-            textSize(16);
+            textSize(18);
             text("Do you think you have fast fingers? Press z to accept.",8,8);
             if (key == 'z')
             {
@@ -169,7 +170,7 @@ void mainScreen(){
       else {
         textAlign(LEFT,TOP);
         fill(255);
-        textSize(16);
+        textSize(18);
         text("Wow! You are so smart and intelligent and smart and smart. You may take my key.",8,8);
       }
     }
@@ -195,6 +196,11 @@ boolean hasItem(int index)
 }
 
 void gameOverScreen() {
+  textFont(font,45);
+  fill(255,0,0);
+  text("you completed the quest!", width/2, 400);
+  text("thanks for playing!", width/2, 450);
+  textAlign(CENTER);
 }
 
 void startGame() { //set variable to start the game

@@ -2,25 +2,30 @@ ArrayList<Card> cards = new ArrayList<Card>();
 ArrayList<Card> faceUp = new ArrayList<Card>();
 int moves = 0;
 void cardsSetup() {
-  cards.add(new Card(100, 100, 5));
-  cards.add(new Card(200, 100, 4));
-  cards.add(new Card(300, 100, 1));
-  cards.add(new Card(400, 100, 2));
+  cards.add(new Card(400, 200, 5));
+  cards.add(new Card(500, 200, 4));
+  cards.add(new Card(600, 200, 1));
+  cards.add(new Card(700, 200, 2));
   
-  cards.add(new Card(100, 200, 1));
-  cards.add(new Card(200, 200, 3));
-  cards.add(new Card(300, 200, 2));
-  cards.add(new Card(400, 200, 6));
+  cards.add(new Card(400, 300, 1));
+  cards.add(new Card(500, 300, 3));
+  cards.add(new Card(600, 300, 2));
+  cards.add(new Card(700, 300, 6));
   
-  cards.add(new Card(100, 300, 6));
-  cards.add(new Card(200, 300, 4));
-  cards.add(new Card(300, 300, 3));
-  cards.add(new Card(400, 300, 5));
+  cards.add(new Card(400, 400, 6));
+  cards.add(new Card(500, 400, 4));
+  cards.add(new Card(600, 400, 3));
+  cards.add(new Card(700, 400, 5));
 }
 
 
 void cardsDraw() {
-  background(0);
+  background(224,184,128);
+  //rect(350,150,450,350);
+  fill(0);
+  textFont(font,35);
+  text("match up all the cards!",width/2, 720);
+  textaAlign(CENTER);
   
   //display of cards
   for (int i = cards.size()-1; i >=0; i--) {

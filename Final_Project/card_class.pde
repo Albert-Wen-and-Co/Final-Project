@@ -4,6 +4,7 @@ class Card
   int id;
   PVector pos = new PVector();
   
+  
   //creates card with desired id
   Card(int tID) {
     up = false;
@@ -33,7 +34,9 @@ class Card
       text(id,pos.x+30,pos.y+40);
     }
     else {
-      fill(255,0,0);
+      fill(0, 106, 179);
+      stroke(255);
+      strokeWeight(3);
       rect(pos.x,pos.y,60,80);
     }
   }
