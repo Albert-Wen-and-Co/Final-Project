@@ -66,12 +66,10 @@ class Bullsystem {
 
     //create a timer
 
-    fill(255);
-    textFont(font, 15);
-    textAlign(CENTER);
+    textSize(15);
     text("Time Remaining:", 520, 720);
     fill(255, 0, 0);
-    textFont(font, 45);
+    textSize(45);
     text(t, 645, 730); //display the time remaining
 
     t = interval-int((millis()-startTime)/1000); //the clock will count down every second from the given interval

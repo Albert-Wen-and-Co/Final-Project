@@ -19,6 +19,7 @@ PImage temple4;
 PImage temple5;
 PImage goaltemple;
 
+
 int gameScreen=0; //the correct screen is determined by the value of the variable, 0= initial screen, 1=game screen, 2=game over screen
 
 void setup() {
@@ -31,15 +32,15 @@ void setup() {
   map=loadImage("mapbackground.jpg");
   map.resize(1200, 800);
   temple1=loadImage("browntemple2.png");
-  temple1.resize(100,70);
+  temple1.resize(95,70);
   temple2=loadImage("redtemple2.png");
   temple2.resize(100,90);
   temple3=loadImage("redtemple.png");
   temple3.resize(100,90);
   temple4=loadImage("browntemple.png");
-  temple4.resize(100,70);
-  temple5=loadImage("graytemple.png");
-  temple5.resize(140,70);
+  temple4.resize(95,70);
+  temple5=loadImage("greentemple.png");
+  temple5.resize(140,120);
   goaltemple=loadImage("goaltemple.png");
   goaltemple.resize(170,100);
   imageMode(CENTER);
@@ -103,13 +104,13 @@ void mainScreen(){
   
   image(goaltemple, 955, 445);
 
-  p.display();
-  p.move();
-
   for (int i = 0; i < people.length; i++)//draw each NPC
   {
     people[i].display();
   }
+
+  p.display();
+  p.move();
 
   for (int i = 0; i < people.length; i++)//check if the player is in contact with an NPC
   {
@@ -210,11 +211,11 @@ boolean hasItem(int index)
 }
 
 void gameOverScreen() {
-  background(255);
-  fill(0);
-  textFont(font, 48);
-  textAlign(CENTER, CENTER);
-  text("Congratulations! You won!", width/2, height/2);
+  textFont(font,45);
+  fill(255,0,0);
+  text("you completed the quest!", width/2, 400);
+  text("thanks for playing!", width/2, 450);
+  textAlign(CENTER);
 }
 
 void startGame() { //set variable to start the game
