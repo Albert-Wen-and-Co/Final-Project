@@ -50,7 +50,7 @@ void setup() {
   people[1] = new NPC(815, 285, temple2);
   people[2] = new NPC(255, 350, temple3);
   people[3] = new NPC(710, 600, temple4);
-  people[4] = new NPC(425, 770, temple5);
+  people[4] = new NPC(425, 795, temple5);
   keys = loadImage("key.png");
   for (int i = 0; i < possibleItems.length; i++)
   {
@@ -157,10 +157,7 @@ void mainScreen(){
             }
             break;
           case 4:
-            if(!hasItem(4))
-            {
-              inventory.add(possibleItems[4]);
-            }
+            inventory.add(possibleItems[4]);
             break;
         }
       }
@@ -181,6 +178,7 @@ void mainScreen(){
             text("Congratulations, you've won a key!",8,8);
             break;
           case 4:
+            text("The game here is still under construction. Take the key anyway.",8,8);
             break;
         }
       }
@@ -223,9 +221,12 @@ void startGame() { //set variable to start the game
 }
 
 void mouseClicked() {
-  if (gameScreen==0) {
+  if (gameScreen==0)//if you are on the start screen
+  {
     startGame();
-  } else if (gameScreen == 3) {
+  }
+  else if (gameScreen == 3)//if you are in the card game
+  {
     for (int i = cards.size()-1; i >=0; i--) {
       Card c = cards.get(i);
       if (c.touches(mouseX, mouseY)) { //flips card when touching
@@ -241,7 +242,9 @@ void mouseClicked() {
         moves+=1;
       }
     }
-  } else if (gameScreen ==5) {
+  }
+  else if (gameScreen ==5)//if you are in the mouse clicking game
+  {
     fStart = true; //timer starts at 1st click
 
     if (fTime+fStartTime/1000-millis()/1000.0>=0) { //you can't increase score after the end of the timer.
@@ -253,13 +256,52 @@ void mouseClicked() {
       gameScreen = 1;
     }
   }
-  if(gameScreen == 4)
+  else if(gameScreen == 4)//if you are in the dodging game
   {
     if (bs.gameScreenB==0) {
       bs.startGameB();
     }
     else if (bs.gameScreenB==2) {
       gameScreen = 1;
+    }
+  }
+  else if(gameScreen == 6)//if you are in the riddle game
+  {
+    switch(riddleNumber)
+    {
+      case 1:
+        if(mouseX >= 500 && mouseX <= 700 && mouseY >= 400 && mouseY <= 600)
+        {
+          riddleNumber = 2;
+        }
+        else
+        {
+          riddleNumber = 5;
+        }
+        break;
+      case 2:
+        if(mouseX >= 500 && mouseX <= 700 && mouseY >= 400 && mouseY <= 600)
+        {
+          riddleNumber = 3;
+        }
+        else
+        {
+          riddleNumber = 5;
+        }
+        break;
+      case 3:
+        if(mouseX >= 500 && mouseX <= 700 && mouseY >= 400 && mouseY <= 600)
+        {
+          riddleNumber = 4;
+        }
+        else
+        {
+          riddleNumber = 5;
+        }
+        break;
+      case 4:
+      case 5:
+        gameScreen = 1;
     }
   }
 }
