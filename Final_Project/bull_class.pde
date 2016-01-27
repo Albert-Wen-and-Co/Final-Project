@@ -2,7 +2,7 @@ class Bulls {
   PVector loc; //create a PVector for location of velocity
   PVector vel;
   float acc=.08; //initalize and define variables
-  float diam=25;
+  float diam=40;
   
 
   Bulls(float x, float y) {

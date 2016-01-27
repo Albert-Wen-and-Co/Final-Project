@@ -4,21 +4,25 @@ class Bullsystem {
   int scb;
   String time;
   int t;
-  int count=25;
+  int count=40;
   int interval;
   PVector mouse;
   int gameScreenB=0;
   float startTime=0;
+  PImage bullcharacter;
+
 
   Bullsystem() { 
     scb=0; //delcare and italize variable for scoring 
     t = 1;
     interval=30;
     mouse = new PVector();
-    for(int i = 0; i < count; i++)
+    for (int i = 0; i < count; i++)
     {
-      bull.add(new Bulls(random(width), random(height/4)));
+      bull.add(new Bulls(random(width), random(height/3)));
     }
+    bullcharacter=loadImage("characterup2.png");
+    bullcharacter.resize(60, 50);
   }
 
   void run() {
@@ -35,11 +39,13 @@ class Bullsystem {
     //create a welcome screen
     fill(0);
     rect(0, 0, 1200, 800);
-    textFont(font, 45);
+    textFont(font, 30);
     fill(255);
-    textAlign(CENTER, CENTER);
-    text("move your character to dodge any oncoming objects!", width/2, 300);
-    text("get hit less than 5 times and get the key! click to start!", width/2, 400);
+    textAlign(CENTER);
+    text("move your character to dodge", width/2, 300);
+    text("any oncoming objects!", width/2, 350);
+    text("get hit less than 5 times and get the key!", width/2, 400);
+    text("click to start!", width/2, 450);
     scb=0;
     t = 1;
     interval=30;
@@ -59,16 +65,17 @@ class Bullsystem {
     text(scb, 610, 770); //display the score
 
     //create a timer
-    textFont(font, 15);
-    textAlign(CENTER);
+
+    textSize(15);
     text("Time Remaining:", 520, 720);
     fill(255, 0, 0);
-    textFont(font, 45);
+    textSize(45);
     text(t, 645, 730); //display the time remaining
 
     t = interval-int((millis()-startTime)/1000); //the clock will count down every second from the given interval
 
-    image(character, mouseX, mouseY);
+
+    image(bullcharacter, mouseX, mouseY);
 
     for (int i=0; i<count; i++) { //create an array
       Bulls b=bull.get(i); //get the bulls from the array
@@ -83,31 +90,28 @@ class Bullsystem {
       }
     }
     
-    if(t <= 0)
+    if(t <= 0 || scb <= -5)
     {
       gameScreenB=2;
     }
   }
 
   void gameOverScreenB() {
-    if (scb>= -5) {
+    if (scb > -5) {
       textFont(font, 45);
-      text("congrats, you have recieved a KEY!", width/2, height/2);
       textAlign(CENTER);
-      if(!hasItem(1))
+      text("Congrats! You have recieved a KEY!", width/2, height/2);
+      if (!hasItem(1))
       {
         inventory.add(possibleItems[1]);
       }
     } else { 
-      text("sorry, try again another time", width/2, height/2);
+      p.loc.set(width/2, height/2);
+      text("Sorry. Try again another time.", width/2, height/2);
     }
   }
 
   void startGameB() { //set variable to start the game
     gameScreenB=1;
-  }
-
-  void mousePressed() { //the game will start if the mouse is pressed on the initial screen
-    
   }
 } //end of bull class parentheses
