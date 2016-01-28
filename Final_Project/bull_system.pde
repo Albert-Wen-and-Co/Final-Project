@@ -4,7 +4,7 @@ class Bullsystem {
   int scb;
   String time;
   int t;
-  int count=40;
+  int count=30;
   int interval;
   PVector mouse;
   int gameScreenB=0;
@@ -42,10 +42,10 @@ class Bullsystem {
     textFont(font, 30);
     fill(255);
     textAlign(CENTER);
-    text("move your character to dodge", width/2, 300);
+    text("Move your character to dodge", width/2, 300);
     text("any oncoming objects!", width/2, 350);
-    text("get hit less than 5 times and get the key!", width/2, 400);
-    text("click to start!", width/2, 450);
+    text("Get hit less than 5 times and get the key!", width/2, 400);
+    text("Click to start!", width/2, 450);
     scb=0;
     t = 1;
     interval=30;
@@ -100,6 +100,7 @@ class Bullsystem {
     if (scb > -5) {
       textFont(font, 45);
       textAlign(CENTER);
+      fill(255);
       text("Congrats! You have recieved a KEY!", width/2, height/2);
       if (!hasItem(1))
       {

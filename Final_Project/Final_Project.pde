@@ -3,7 +3,7 @@ float playerX, playerY;
 Charact c;
 Bullsystem bs;
 Charact p;
-NPC[] people = new NPC[5];
+NPC[] people = new NPC[6];
 Item[] possibleItems = new Item[5];
 ArrayList<Item> inventory = new ArrayList<Item>();
 
@@ -51,6 +51,7 @@ void setup() {
   people[2] = new NPC(255, 350, temple3);
   people[3] = new NPC(710, 600, temple4);
   people[4] = new NPC(425, 795, temple5);
+  people[5] = new NPC(955, 445, goaltemple);
   keys = loadImage("key.png");
   for (int i = 0; i < possibleItems.length; i++)
   {
@@ -87,9 +88,9 @@ void initScreen() {
   image(logo, width/2, 300);
   fill(0);
   textFont(font, 25);
-  text("INSTRUCTIONS: use the arrow keys to travel around the map ", width/2, 500);
+  text("INSTRUCTIONS: Use the arrow keys to travel around the map", width/2, 500);
   text("and play the minigames at each location to collect the keys.", width/2, 530);
-  text("collect all keys to unlock the temple and win the game!", width/2, 560);
+  text("Collect all keys to unlock the temple and win the game!", width/2, 560);
   fill(255, 0, 0);
   textFont(font, 25);
   text("click anywhere to start!", width/2, 600);
@@ -101,8 +102,6 @@ void mainScreen(){
   image(map, width/2, height/2);
   fill(150);
   rect(1050, 0, width, height);
-  
-  image(goaltemple, 955, 445);
 
   for (int i = 0; i < people.length; i++)//draw each NPC
   {
@@ -116,7 +115,7 @@ void mainScreen(){
   {
     if (p.contact(people[i].loc))
     {
-      fill(0);//replace this with something that starts a minigame
+      fill(0);
       rect(0, 0, width, 50);
       textAlign(LEFT,TOP);
       fill(255);
@@ -145,6 +144,7 @@ void mainScreen(){
             text("Do you think you have fast fingers? Press z to accept.",8,8);
             if (key == 'z')
             {
+              fSetup();
               gameScreen = 5;
             }
             break;
@@ -159,6 +159,19 @@ void mainScreen(){
           case 4:
             inventory.add(possibleItems[4]);
             break;
+          case 5:
+            text("You need five keys to unlock this door. Press z to unlock.",8,8);
+            if (key == 'z' && hasItem(0) && hasItem(1) && hasItem(2) && hasItem(3) && hasItem(4))
+            {
+              gameScreen = 2;
+            }
+            else if (key == 'z')
+            {
+              fill(0);
+              rect(0, 0, width, 50);
+              fill(255);
+              text("You do not have enough keys to unlock this.",8,8);
+            }
         }
       }
       else
@@ -179,7 +192,6 @@ void mainScreen(){
             break;
           case 4:
             text("The game here is still under construction. Take the key anyway.",8,8);
-            break;
         }
       }
     }
@@ -189,14 +201,14 @@ void mainScreen(){
     Item tempItem = inventory.get(i);
     tempItem.display(1125, 100 + 90 * i);
   }
-  if(hasItem(0) && hasItem(1) && hasItem(2) && hasItem(3) && hasItem(4))
-  {
-    gameScreen = 2;
-  }
 }
 
 boolean hasItem(int index)
 {
+  if(index == 5)
+  {
+    return false;
+  }
   for (int i = 0; i < inventory.size(); i++)
   {
     Item tempItem = inventory.get(i);
@@ -209,10 +221,11 @@ boolean hasItem(int index)
 }
 
 void gameOverScreen() {
+  background(255);
   textFont(font,45);
   fill(255,0,0);
-  text("you completed the quest!", width/2, 400);
-  text("thanks for playing!", width/2, 450);
+  text("You have completed the quest!", width/2, 375);
+  text("Thanks for playing!", width/2, 450);
   textAlign(CENTER);
 }
 
@@ -249,6 +262,7 @@ void mouseClicked() {
 
     if (fTime+fStartTime/1000-millis()/1000.0>=0) { //you can't increase score after the end of the timer.
       fScore+=1;
+      image(origami, mouseX, mouseY);
     }
     
     if(millis() - fStartTime > 10000)
