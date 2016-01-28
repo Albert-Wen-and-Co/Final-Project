@@ -2,14 +2,19 @@ class Bullsystem {
 
   ArrayList <Bulls> bull =new ArrayList<Bulls>();
   int scb;
+  
+  //variables for timer
   String time;
   int t;
-  int count=30;
+  int count=35;
   int interval;
   PVector mouse;
-  int gameScreenB=0;
   float startTime=0;
+
   PImage bullcharacter;
+  
+  int gameScreenB=0;
+
 
 
   Bullsystem() { 
@@ -17,7 +22,7 @@ class Bullsystem {
     t = 1;
     interval=30;
     mouse = new PVector();
-    for (int i = 0; i < count; i++)
+    for (int i = 0; i < count; i++) //create an array for the lanterns, have then 
     {
       bull.add(new Bulls(random(width), random(height/3)));
     }
@@ -30,22 +35,24 @@ class Bullsystem {
       initScreenB();
     } else if (gameScreenB == 1) {
       mainScreenB();
-    } else if (gameScreenB == 2) { //when the time runs out, displat the game over screen
+    } else if (gameScreenB == 2) { //when the time runs out, display the game over text
       gameOverScreenB();
     }
   }
 
   void initScreenB() {
     //create a welcome screen
-    fill(0);
+    fill(255, 204, 204);
     rect(0, 0, 1200, 800);
-    textFont(font, 30);
-    fill(255);
+    textFont(font, 45);
+    fill(0);
     textAlign(CENTER);
-    text("Move your character to dodge", width/2, 300);
-    text("any oncoming objects!", width/2, 350);
-    text("Get hit less than 5 times and get the key!", width/2, 400);
-    text("Click to start!", width/2, 450);
+    text("move your character to dodge", width/2, 250);
+    text("any falling objects!", width/2, 300);
+    text("get hit less than 5 times", width/2, 350);
+    text("and get the key!",width/2, 400);
+    text("click to start!", width/2, 450);
+
     scb=0;
     t = 1;
     interval=30;
@@ -53,11 +60,11 @@ class Bullsystem {
   }
 
   void mainScreenB() {
-    background(0);
+    background(255, 204, 204);
     mouse.set(mouseX, mouseY);  //set value of mouse as mouseX,mouseY
 
     //create a scoreboard
-    fill(255);
+    fill(0);
     textFont(font, 15);
     textAlign(CENTER);
     text("Score:", 550, 765);
@@ -65,8 +72,9 @@ class Bullsystem {
     text(scb, 610, 770); //display the score
 
     //create a timer
-
+    fill(255);
     textSize(15);
+    textAlign(CENTER);
     text("Time Remaining:", 520, 720);
     fill(255, 0, 0);
     textSize(45);
@@ -78,26 +86,30 @@ class Bullsystem {
     image(bullcharacter, mouseX, mouseY);
 
     for (int i=0; i<count; i++) { //create an array
-      Bulls b=bull.get(i); //get the bulls from the array
-      b.fall();   //make the bull run to the bottom of the screen
-      b.display();  //display the raindrop
-      if (b.isInContactWith(mouse)) {  //check to see if the bull is contact with the character
-        b.reset(); //if it is, reset the bull
-        scb=scb-1;  //if a bull hits the character, the player looses a point
+      Bulls b=bull.get(i); //get the lanterns from the array
+      b.fall();   //make the lantern fall to the bottom of the screen
+      b.display();  //display the lantern
+      if (b.isInContactWith(mouse)) {  //check to see if the lantern is in contact with the character
+        b.reset(); //if it is, reset the lantern
+        scb=scb-1;  //if a lantern hits the character, the player looses a point
       }
-      if (b.loc.y > height + b.diam/2) {     //check to see if the bull goes below the bottom of the screen
+      if (b.loc.y > height + b.diam/2) {     //check to see if the lantern goes below the bottom of the screen
         b.reset();                           //if it does, it resets
       }
     }
+
     
     if(t <= 0 || scb <= -5)
+
     {
       gameScreenB=2;
     }
   }
 
+
   void gameOverScreenB() {
     if (scb > -5) {
+
       textFont(font, 45);
       textAlign(CENTER);
       fill(255);
@@ -106,9 +118,11 @@ class Bullsystem {
       {
         inventory.add(possibleItems[1]);
       }
+
     } else { 
       p.loc.set(width/2, height/2);
       text("Sorry. Try again another time.", width/2, height/2);
+
     }
   }
 

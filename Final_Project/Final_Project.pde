@@ -280,7 +280,6 @@ void mouseClicked() {
 
     if (fTime+fStartTime/1000-millis()/1000.0>=0) { //you can't increase score after the end of the timer.
       fScore+=1;
-      image(origami, mouseX, mouseY);
     }
     
     if(millis() - fStartTime > 10000)

@@ -11,7 +11,8 @@ class NPC
     appearance = im;
   }
   
-  void display()
+  void display() 
+  //display locations as ellipses
   {
     image(appearance, loc.x, loc.y);
   }
