@@ -170,7 +170,7 @@ void mainScreen(){
             }
             break;
           case 4:
-            text("It takes great skill to balance on a moving beam. Press z to accept.",8,8);
+            text("It takes great skill to balance a tilting beam. Press z to accept.",8,8);
             if (key == 'z')
             {
               balanceSetup();
@@ -334,6 +334,13 @@ void mouseClicked() {
       case 4:
       case 5:
         gameScreen = 1;
+    }
+  }
+  else if(gameScreen == 7)
+  {
+    if(balanceTime <= 0 || balanceX < -400 || balanceX > 400)
+    {
+      gameScreen = 1;
     }
   }
 }
