@@ -144,6 +144,7 @@ void mainScreen(){
             text("Do you think you have fast fingers? Press z to accept.",8,8);
             if (key == 'z')
             {
+              fSetup();
               gameScreen = 5;
             }
             break;
@@ -261,6 +262,7 @@ void mouseClicked() {
 
     if (fTime+fStartTime/1000-millis()/1000.0>=0) { //you can't increase score after the end of the timer.
       fScore+=1;
+      image(origami, mouseX, mouseY);
     }
     
     if(millis() - fStartTime > 10000)
