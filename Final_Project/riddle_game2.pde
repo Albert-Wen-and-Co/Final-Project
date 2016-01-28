@@ -29,8 +29,8 @@ void riddleDraw() {
     text("He could jump three feet, but he slid",600,200);
     text("a foot everytime he jumped",600,250);
     text("How many jumps does it take for him to escape the hole?",600,300);
-    text("8", 200, 500);
-    text("7", 600, 500); //this is the correct answer
+    text("7", 200, 500);//this is the correct answer
+    text("8", 600, 500); 
     text("this is a trick!", 200, 700);
     text("9", 600, 700);
   }
@@ -39,9 +39,9 @@ void riddleDraw() {
     text("What is the next number in this series?", 600, 150);
     text("4, 6, 12, 18, 30, 42, 60, 72, 102, 108,...",600,200);
     text("114", 200, 500);
-    text("138", 600, 500); //this is the correct answer
+    text("136", 600, 500);
     text("120", 200, 700);
-    text("136", 600, 700);
+    text("138", 600, 700);//this is the correct answer
   }
   else if(riddleNumber == 4)
   {

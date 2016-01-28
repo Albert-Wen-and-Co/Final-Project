@@ -317,7 +317,7 @@ void mouseClicked() {
         }
         break;
       case 2:
-        if(mouseX >= 400 && mouseX <= 800 && mouseY >= 400 && mouseY <= 600)
+        if(mouseX >= 0 && mouseX <= 400 && mouseY >= 400 && mouseY <= 600)
         {
           riddleNumber = 3;
         }
@@ -327,7 +327,7 @@ void mouseClicked() {
         }
         break;
       case 3:
-        if(mouseX >= 400 && mouseX <= 800 && mouseY >= 400 && mouseY <= 600)
+        if(mouseX >= 400 && mouseX <= 800 && mouseY >= 600 && mouseY <= 800)
         {
           riddleNumber = 4;
         }
