@@ -1,0 +1,44 @@
+﻿Merge remote-tracking branch 'refs/remotes/origin/Storm' into Kami
+
+# Conflicts:
+#	Final_Project/Final_Project.pde
+#	Final_Project/NPC.pde
+#	Final_Project/bull_system.pde
+#	Final_Project/cards_game.pde
+#	Final_Project/data/Thumbs.db
+#	Final_Project/trial_of_finger_speed.pde
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch Kami
+# Your branch is up-to-date with 'origin/Kami'.
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	new file:   .gitignore
+#	modified:   Final_Project/Final_Project.pde
+#	modified:   Final_Project/NPC.pde
+#	modified:   Final_Project/bull_system.pde
+#	modified:   Final_Project/cards_game.pde
+#	deleted:    Final_Project/cards_game/card_class.pde
+#	deleted:    Final_Project/cards_game/cards_game.pde
+#	renamed:    Final_Project/new_item.png -> Final_Project/data/new_item.png
+#	new file:   Final_Project/data/origami.png
+#	deleted:    Final_Project/puzzle_class.pde
+#	deleted:    Final_Project/puzzle_game.pde
+#	new file:   Final_Project/riddle_class2.pde
+#	new file:   Final_Project/riddle_game2.pde
+#	modified:   Final_Project/trial_of_finger_speed.pde
+#	modified:   Final_Project/trial_of_finger_speed/trial_of_finger_speed.pde
+#	deleted:    riddle_class/riddle_class.pde
+#	deleted:    riddle_class/riddle_game.pde
+#	new file:   sc2lxgmd.4hv.txt
+#
+

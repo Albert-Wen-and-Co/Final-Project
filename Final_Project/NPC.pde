@@ -2,18 +2,18 @@ class NPC
 {
   PVector loc;
   float diam;
+  PImage appearance;
   
-  NPC(float a, float b) //the locations will be able to be specified
+  NPC(float a, float b, PImage im)
   {
     loc = new PVector(a, b);
     diam = 40;
+    appearance = im;
   }
   
   void display() 
   //display locations as ellipses
   {
-    noFill();
-    noStroke();
-    ellipse(loc.x, loc.y, diam, diam);
+    image(appearance, loc.x, loc.y);
   }
 }

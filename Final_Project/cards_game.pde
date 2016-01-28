@@ -26,9 +26,14 @@ void cardsDraw() {
   background(179, 214, 255);
   fill(0);
   textFont(font,35);
+<<<<<<< HEAD
   text("match up all the cards!", 600, 720);
   textAlign(CENTER);
   
+=======
+  text("Match up all the cards!",width/2, 720);
+  textAlign(CENTER);
+>>>>>>> refs/remotes/origin/Storm
   
   //display of cards
   for (int i = cards.size()-1; i >=0; i--) {

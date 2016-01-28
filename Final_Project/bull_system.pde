@@ -16,6 +16,7 @@ class Bullsystem {
   int gameScreenB=0;
 
 
+
   Bullsystem() { 
     scb=0; //delcare and italize variable for scoring 
     t = 1;
@@ -23,7 +24,7 @@ class Bullsystem {
     mouse = new PVector();
     for (int i = 0; i < count; i++) //create an array for the lanterns, have then 
     {
-      bull.add(new Bulls(random(width), random(height/4)));
+      bull.add(new Bulls(random(width), random(height/3)));
     }
     bullcharacter=loadImage("characterup2.png");
     bullcharacter.resize(60, 50);
@@ -51,6 +52,7 @@ class Bullsystem {
     text("get hit less than 5 times", width/2, 350);
     text("and get the key!",width/2, 400);
     text("click to start!", width/2, 450);
+
     scb=0;
     t = 1;
     interval=30;
@@ -71,11 +73,11 @@ class Bullsystem {
 
     //create a timer
     fill(255);
-    textFont(font, 15);
+    textSize(15);
     textAlign(CENTER);
     text("Time Remaining:", 520, 720);
     fill(255, 0, 0);
-    textFont(font, 45);
+    textSize(45);
     text(t, 645, 730); //display the time remaining
 
     t = interval-int((millis()-startTime)/1000); //the clock will count down every second from the given interval
@@ -96,30 +98,35 @@ class Bullsystem {
       }
     }
 
-    if (t <= 0) //if the time runs out, display the game over text 
+    
+    if(t <= 0 || scb <= -5)
+
     {
       gameScreenB=2;
     }
   }
 
-  void gameOverScreenB() { //if the score is greater than -5. add a key to the inventory
-    if (scb>= -5) {
+
+  void gameOverScreenB() {
+    if (scb > -5) {
+
       textFont(font, 45);
-      text("congrats, you have recieved a KEY!", width/2, height/2);
       textAlign(CENTER);
+      fill(255);
+      text("Congrats! You have recieved a KEY!", width/2, height/2);
       if (!hasItem(1))
       {
         inventory.add(possibleItems[1]);
       }
-    } else { //if not, display sorry text
-      text("sorry, try again another time", width/2, height/2);
+
+    } else { 
+      p.loc.set(width/2, height/2);
+      text("Sorry. Try again another time.", width/2, height/2);
+
     }
   }
 
   void startGameB() { //set variable to start the game
     gameScreenB=1;
-  }
-
-  void mousePressed() { //the game will start if the mouse is pressed on the initial screen
   }
 } //end of bull class parentheses
