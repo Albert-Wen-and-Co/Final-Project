@@ -20,13 +20,12 @@ PImage temple5;
 PImage goaltemple;
 
 
-int gameScreen=0; //the correct screen is determined by the value of the variable, 0= initial screen, 1=game screen, 2=game over screen...
+int gameScreen=0; //the correct screen is determined by the value of the variable, 0= initial screen, 1=game screen, 2=game over screen
 
 void setup() {
   size(1200, 800);//set up canvas size
 
-  //load fonts and images
-  font=loadFont("HVDBodedo.vlw"); 
+  font=loadFont("HVDBodedo.vlw"); //load fonts and images
   character=loadImage("character down.png");
   character.resize(60, 50);
   logo=loadImage("mapquest(HVD).png");
@@ -47,16 +46,13 @@ void setup() {
   imageMode(CENTER);
 
   p = new Charact(width/2, height/2);//initialize variables
-
   people[0] = new NPC(115, 95, temple1);
   people[1] = new NPC(815, 285, temple2);
   people[2] = new NPC(255, 350, temple3);
   people[3] = new NPC(710, 600, temple4);
   people[4] = new NPC(425, 795, temple5);
   people[5] = new NPC(955, 445, goaltemple);
-
   keys = loadImage("key.png");
-  
   for (int i = 0; i < possibleItems.length; i++)
   {
     possibleItems[i] = new Item(keys);
@@ -66,7 +62,7 @@ void setup() {
 
 void draw()
 {
-  if (gameScreen == 0) { //if the value of variable is #, then the coresponding screen/game will show
+  if (gameScreen == 0) { //if the value of variable is #, then the coresponding screen will show
     initScreen();
   } else if (gameScreen == 1) {
     mainScreen();
@@ -106,21 +102,6 @@ void mainScreen(){
   image(map, width/2, height/2);
   fill(150);
   rect(1050, 0, width, height);
-  fill(0);
-  textFont(font,20);
-  text("inventory", 1125,30);
-  
-  //display temple images at specific locations
-  image(temple1, 115,90);
-  image(temple2, 815,275);
-  image(temple3, 255,340);
-  image(temple4, 710,595);
-  image(temple5, 225,765);
-  image(goaltemple, 950, 475);
-
-  p.display();
-  p.move();
-
 
   for (int i = 0; i < people.length; i++)//draw each NPC
   {
@@ -143,14 +124,10 @@ void mainScreen(){
       {
         switch(i)
         {
-          //display text for each different text when the player is in contact with each certain NPC
           case 0:
             text("Test your memory and ability in this challenge. Press z to accept.",8,8);
             if (key == 'z')
             {
-
-              p.loc.set(width/2, height/2); //if the key is pressed, the card game will begin
-
               cardsSetup();
               gameScreen = 3;
             }
@@ -159,9 +136,6 @@ void mainScreen(){
             text("I bet you can't dodge these objects! Press z to accept.",8,8);
             if (key == 'z')
             {
-
-              p.loc.set(width/2, height/2); //if the key is pressed, the bull game will begin
-
               bs.gameScreenB = 0;
               gameScreen = 4;
             }
@@ -170,11 +144,7 @@ void mainScreen(){
             text("Do you think you have fast fingers? Press z to accept.",8,8);
             if (key == 'z')
             {
-
-              p.loc.set(width/2, height/2); //if the key is pressed, the speed game will begin
-
               fSetup();
-
               gameScreen = 5;
             }
             break;
@@ -204,13 +174,6 @@ void mainScreen(){
             }
         }
       }
-      else { 
-        //display this text when a key is to be added to the player's inventory
-        textAlign(LEFT,TOP);
-        fill(255);
-        textSize(18);
-        text("Wow! You are so smart and intelligent and smart and smart. You may take my key.",8,8);
-
       else
       {
         switch(i)
@@ -233,8 +196,6 @@ void mainScreen(){
       }
     }
   }
-
- 
   for (int i = 0; i < inventory.size(); i++)
   {
     Item tempItem = inventory.get(i);
@@ -260,7 +221,6 @@ boolean hasItem(int index)
 }
 
 void gameOverScreen() {
-  //display game over screen
   background(255);
   textFont(font,45);
   fill(255,0,0);
@@ -274,7 +234,6 @@ void startGame() { //set variable to start the game
 }
 
 void mouseClicked() {
-  //clicking method for card game
   if (gameScreen==0)//if you are on the start screen
   {
     startGame();
@@ -303,25 +262,19 @@ void mouseClicked() {
 
     if (fTime+fStartTime/1000-millis()/1000.0>=0) { //you can't increase score after the end of the timer.
       fScore+=1;
-      image(origami, mouseX, mouseY);
     }
     
     if(millis() - fStartTime > 10000)
     {
-      gameScreen = 1; //when the timer runs out, the player will return to the main screen
+      gameScreen = 1;
     }
   }
-  
-  //method to start bull game
-  if(gameScreen == 4) 
-
   else if(gameScreen == 4)//if you are in the dodging game
-
   {
-    if (bs.gameScreenB==0) { 
+    if (bs.gameScreenB==0) {
       bs.startGameB();
     }
-    else if (bs.gameScreenB==2) { //at the end of the bull game, the player will return to the main screen
+    else if (bs.gameScreenB==2) {
       gameScreen = 1;
     }
   }
