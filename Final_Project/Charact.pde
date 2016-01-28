@@ -22,37 +22,37 @@ class Charact {
     {
       switch(keyCode)
       {
-      case UP:
-        if (loc.y > diam/2)
-        {
-          loc.y -= 4;
-          cha = loadImage("character up.png");
-          cha.resize(60,50);
-        }
-        break;
-      case DOWN:
-        if (loc.y < height - diam/2)
-        {
-          loc.y += 4;
-          cha = loadImage("character down.png");
-          cha.resize(60,50);
-        }
-        break;
-      case LEFT:
-        if (loc.x > diam/2)
-        {
-          loc.x -= 4;
-          cha = loadImage("character left.png");
-          cha.resize(50,60);
-        }
-        break;
-      case RIGHT:
-        if (loc.x < 1050 - diam/2)
-        {
-          loc.x += 4;
-          cha = loadImage("character right.png");
-          cha.resize(50,60);
-        }
+        case UP:
+          if (loc.y > diam/2)
+          {
+            loc.y -= 4;
+            cha = loadImage("character up.png");
+            cha.resize(60,50);
+          }
+          break;
+        case DOWN:
+          if (loc.y < height - diam/2)
+          {
+            loc.y += 4;
+            cha = loadImage("character down.png");
+            cha.resize(60,50);
+          }
+          break;
+        case LEFT:
+          if (loc.x > diam/2)
+          {
+            loc.x -= 4;
+            cha = loadImage("character left.png");
+            cha.resize(50,60);
+          }
+          break;
+        case RIGHT:
+          if (loc.x < 1050 - diam/2)
+          {
+            loc.x += 4;
+            cha = loadImage("character right.png");
+            cha.resize(50,60);
+          }
       }
     }
   }
