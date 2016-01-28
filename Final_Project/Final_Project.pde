@@ -19,7 +19,6 @@ PImage temple4;
 PImage temple5;
 PImage goaltemple;
 
-
 int gameScreen=0; //the correct screen is determined by the value of the variable, 0= initial screen, 1=game screen, 2=game over screen
 
 void setup() {
@@ -45,14 +44,16 @@ void setup() {
   goaltemple.resize(170,100);
   imageMode(CENTER);
 
-  p = new Charact(width/2, height/2);//initialize variables
+  p = new Charact(width/2, height/2);//initialize variables/array
   people[0] = new NPC(115, 95, temple1);
   people[1] = new NPC(815, 285, temple2);
   people[2] = new NPC(255, 350, temple3);
   people[3] = new NPC(710, 600, temple4);
   people[4] = new NPC(425, 795, temple5);
   people[5] = new NPC(955, 445, goaltemple);
+  
   keys = loadImage("key.png");
+  
   for (int i = 0; i < possibleItems.length; i++)
   {
     possibleItems[i] = new Item(keys);
@@ -66,37 +67,37 @@ void draw()
   {
     initScreen();
   }
-  else if (gameScreen == 1)
+  else if (gameScreen == 1)//if the value of variable is 1, the main screen will show
   {
     mainScreen();
   }
-  else if (gameScreen == 2)
+  else if (gameScreen == 2)//if the value of variable is 2, the game over screen will show
   {
     gameOverScreen();
   } 
-  else if (gameScreen == 3)
+  else if (gameScreen == 3) //if the value of variable is 3, the card game will show
   {
     cardsDraw();
   }
-  else if(gameScreen == 4)
+  else if(gameScreen == 4) //if the value of variable is 4, the dodging will show
   {
     bs.run();
   }
-  else if (gameScreen == 5)
+  else if (gameScreen == 5) ////if the value of variable is 5, the trial of finger speed game will show
   {
     fDraw();
   }
-  else if (gameScreen == 6)
+  else if (gameScreen == 6) //if the value of variable is 6, the riddle game will show
   {
     riddleDraw();
   }
-  else if (gameScreen == 7)
+  else if (gameScreen == 7) //if the value of variable is 7, the balancing game will show
   {
     balanceDraw();
   }
 }
 
-void initScreen() { 
+void initScreen() { //draw the initial screen
   background(255);
   image(logo, width/2, 300);
   fill(0);
@@ -115,16 +116,16 @@ void mainScreen(){
   image(map, width/2, height/2);
   fill(150);
   rect(1050, 0, width, height);
-  fill(0);
-  textSize(20);
-  text("inventory",1125,20);
+  //fill(0);
+  //textSize(20);
+  //text("inventory",1125,20);
 
-  for (int i = 0; i < people.length; i++)//draw each NPC
+  for (int i = 0; i < people.length; i++)//create an array for the NPC
   {
     people[i].display();
   }
 
-  p.display();
+  p.display(); //display the NPCs
   p.move();
 
   for (int i = 0; i < people.length; i++)//check if the player is in contact with an NPC
@@ -140,11 +141,11 @@ void mainScreen(){
       {
         switch(i)
         {
-          case 0:
+          case 0: //for each case, a different dialouge prompt will show at the top of the screen based on which NPC the player is in contact with
             text("Test your memory and ability in this challenge. Press z to accept.",8,8);
-            if (key == 'z')
+            if (key == 'z') //if z is pressed the game will initialize
             {
-              cardsSetup();
+              cardsSetup(); //card game
               gameScreen = 3;
             }
             break;
@@ -152,7 +153,7 @@ void mainScreen(){
             text("I bet you can't dodge these objects! Press z to accept.",8,8);
             if (key == 'z')
             {
-              bs.gameScreenB = 0;
+              bs.gameScreenB = 0; //dodging game
               gameScreen = 4;
             }
             break;
@@ -161,14 +162,14 @@ void mainScreen(){
             if (key == 'z')
             {
               fSetup();
-              gameScreen = 5;
+              gameScreen = 5; //speed game
             }
             break;
           case 3:
             text("Answer these riddles and receive a prize! Press z to accept.",8,8);
             if (key == 'z')
             {
-              riddleSetup();
+              riddleSetup(); //riddle game 
               gameScreen = 6;
             }
             break;
@@ -176,17 +177,17 @@ void mainScreen(){
             text("It takes great skill to balance a tilting beam. Press z to accept.",8,8);
             if (key == 'z')
             {
-              balanceSetup();
+              balanceSetup(); //balancing game
               gameScreen = 7;
             }
             break;
-          case 5:
+          case 5: //if the player comes in contact with the goalTemple, this dialogue prompt will show
             text("You need five keys to unlock this door. Press z to unlock.",8,8);
-            if (key == 'z' && hasItem(0) && hasItem(1) && hasItem(2) && hasItem(3) && hasItem(4))
+            if (key == 'z' && hasItem(0) && hasItem(1) && hasItem(2) && hasItem(3) && hasItem(4)) //if z is pressed and all the items are obtained, the game over screen will show
             {
-              gameScreen = 2;
+              gameScreen = 2; 
             }
-            else if (key == 'z')
+            else if (key == 'z') //if the player does not have all of the items, the promt will tell them
             {
               fill(0);
               rect(0, 0, width, 50);
@@ -199,7 +200,7 @@ void mainScreen(){
       {
         switch(i)
         {
-          case 0:
+          case 0: //uf the player wins the games and obtains the keys, these prompts will show when they exit the game
             text("Wow! You are so smart and intelligent and smart and smart. You may take my key.",8,8);
             break;
           case 1:
@@ -217,14 +218,14 @@ void mainScreen(){
       }
     }
   }
-  for (int i = 0; i < inventory.size(); i++)
+  for (int i = 0; i < inventory.size(); i++) //get the key from the array and display it
   {
     Item tempItem = inventory.get(i);
     tempItem.display(1125, 100 + 90 * i);
   }
 }
 
-boolean hasItem(int index)
+boolean hasItem(int index) //method to check to see if the player has already obtained the key for that game
 {
   if(index == 5)
   {
@@ -241,7 +242,7 @@ boolean hasItem(int index)
   return false;
 }
 
-void gameOverScreen() {
+void gameOverScreen() { //draw game over screen 
   background(255);
   textFont(font,45);
   fill(255,0,0);
@@ -301,7 +302,7 @@ void mouseClicked() {
   }
   else if(gameScreen == 6)//if you are in the riddle game
   {
-    switch(riddleNumber)
+    switch(riddleNumber)//metids to check if you are selecting the right answer
     {
       case 1:
         if(mouseX >= 400 && mouseX <= 800 && mouseY >= 400 && mouseY <= 600)
@@ -340,7 +341,7 @@ void mouseClicked() {
   }
   else if(gameScreen == 7)
   {
-    if(balanceTime <= 0 || balanceX < -400 || balanceX > 400)
+    if(balanceTime <= 0 || balanceX < -400 || balanceX > 400) //if the time runs out, or the weight slides off the stick, the player will be brought back to the main screen
     {
       gameScreen = 1;
     }

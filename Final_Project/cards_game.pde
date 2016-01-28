@@ -1,4 +1,4 @@
-//create an array for the cards
+//create an array for the cards 
 ArrayList<Card> cards = new ArrayList<Card>();
 ArrayList<Card> faceUp = new ArrayList<Card>();
 int moves = 0;

@@ -59,7 +59,7 @@ class Charact {
     }
   }
 
-  boolean contact(PVector loc2) { //check to see f the character is in contact with an NPC
+  boolean contact(PVector loc2) { //check to see if the character is in contact with an NPC
     if (loc.dist(loc2) < diam) {
       return true;
     } 

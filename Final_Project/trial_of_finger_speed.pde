@@ -1,6 +1,6 @@
 int fScore =  0; //#clicks
 float fTime = 10; //fTime given
-int fGoal = 70; //goal #clicks
+int fGoal = 50; //goal #clicks
 boolean fStart = false; //whether fTimer is started
 float fStartTime; //fTime at start of fTimer (since millis() returns fTime since start of program)
 
