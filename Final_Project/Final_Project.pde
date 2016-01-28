@@ -62,24 +62,37 @@ void setup() {
 
 void draw()
 {
-  if (gameScreen == 0) { //if the value of variable is #, then the coresponding screen will show
+  if (gameScreen == 0) //if the value of variable is #, then the coresponding screen will show
+  {
     initScreen();
-  } else if (gameScreen == 1) {
+  }
+  else if (gameScreen == 1)
+  {
     mainScreen();
-  } else if (gameScreen == 2) {
+  }
+  else if (gameScreen == 2)
+  {
     gameOverScreen();
-  } else if (gameScreen == 3) {
+  } 
+  else if (gameScreen == 3)
+  {
     cardsDraw();
   }
   else if(gameScreen == 4)
   {
     bs.run();
   }
-  else if (gameScreen == 5) {
+  else if (gameScreen == 5)
+  {
     fDraw();
   }
-  else if (gameScreen == 6) {
+  else if (gameScreen == 6)
+  {
     riddleDraw();
+  }
+  else if (gameScreen == 7)
+  {
+    balanceDraw();
   }
 }
 
@@ -157,7 +170,12 @@ void mainScreen(){
             }
             break;
           case 4:
-            inventory.add(possibleItems[4]);
+            text("It takes great skill to balance on a moving beam. Press z to accept.",8,8);
+            if (key == 'z')
+            {
+              balanceSetup();
+              gameScreen = 7;
+            }
             break;
           case 5:
             text("You need five keys to unlock this door. Press z to unlock.",8,8);
@@ -191,7 +209,7 @@ void mainScreen(){
             text("Congratulations, you've won a key!",8,8);
             break;
           case 4:
-            text("The game here is still under construction. Take the key anyway.",8,8);
+            text("An amazing balancing act! Your prize is a key!",8,8);
         }
       }
     }
@@ -284,31 +302,31 @@ void mouseClicked() {
     switch(riddleNumber)
     {
       case 1:
-        if(mouseX >= 500 && mouseX <= 700 && mouseY >= 400 && mouseY <= 600)
+        if(mouseX >= 400 && mouseX <= 800 && mouseY >= 400 && mouseY <= 600)
         {
           riddleNumber = 2;
         }
-        else
+        else if(mouseX >= 0 && mouseX <= 800 && mouseY >= 400 && mouseY <= 800)
         {
           riddleNumber = 5;
         }
         break;
       case 2:
-        if(mouseX >= 500 && mouseX <= 700 && mouseY >= 400 && mouseY <= 600)
+        if(mouseX >= 400 && mouseX <= 800 && mouseY >= 400 && mouseY <= 600)
         {
           riddleNumber = 3;
         }
-        else
+        else if(mouseX >= 0 && mouseX <= 800 && mouseY >= 400 && mouseY <= 800)
         {
           riddleNumber = 5;
         }
         break;
       case 3:
-        if(mouseX >= 500 && mouseX <= 700 && mouseY >= 400 && mouseY <= 600)
+        if(mouseX >= 400 && mouseX <= 800 && mouseY >= 400 && mouseY <= 600)
         {
           riddleNumber = 4;
         }
-        else
+        else if(mouseX >= 0 && mouseX <= 800 && mouseY >= 400 && mouseY <= 800)
         {
           riddleNumber = 5;
         }
