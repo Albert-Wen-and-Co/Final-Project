@@ -11,6 +11,7 @@ class Charact {
   }
 
   void display() {
+    //display the character at loc.x and loc.y
     noFill();
     noStroke();
     ellipse(loc.x, loc.y, diam, diam);
@@ -18,38 +19,39 @@ class Charact {
   }
 
   void move() {
+    //allow the character to be moved with the arrow keys
     if (keyPressed)
     {
       switch(keyCode)
       {
-      case UP:
+      case UP: //if the up arrow key is pressed, the character will move and be facing up
         if (loc.y > diam/2)
         {
-          loc.y -= 4;
+          loc.y -= 6;
           cha = loadImage("character up.png");
           cha.resize(60,50);
         }
         break;
-      case DOWN:
+      case DOWN: //if the down arrow key is pressed, the character will move and be facing down
         if (loc.y < height - diam/2)
         {
-          loc.y += 4;
+          loc.y += 6;
           cha = loadImage("character down.png");
           cha.resize(60,50);
         }
         break;
-      case LEFT:
+      case LEFT: //if the left arrow key is pressed, the character will move and be facing left
         if (loc.x > diam/2)
         {
-          loc.x -= 4;
+          loc.x -= 6;
           cha = loadImage("character left.png");
           cha.resize(50,60);
         }
         break;
-      case RIGHT:
+      case RIGHT: //if the right arrow key is pressed, the character will move and be facing right
         if (loc.x < 1050 - diam/2)
         {
-          loc.x += 4;
+          loc.x += 6;
           cha = loadImage("character right.png");
           cha.resize(50,60);
         }
@@ -57,7 +59,7 @@ class Charact {
     }
   }
 
-  boolean contact(PVector loc2) {
+  boolean contact(PVector loc2) { //check to see f the character is in contact with an NPC
     if (loc.dist(loc2) < diam) {
       return true;
     } 

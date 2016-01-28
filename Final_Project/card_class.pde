@@ -34,11 +34,13 @@ class Card
       text(id,pos.x+50,pos.y+65);
     }
     else { //draw card when face is down
-      fill(0, 106, 179);
+      fill(0, 49, 102);
       stroke(255);
-      strokeWeight(3);
+      strokeWeight(5);
       rect(pos.x,pos.y,100,130);
+      
       //display card pattern background (because texture only works w/ vertices)
+      /***********
       image(cardback,200,215); 
       image(cardback,450,215);
       image(cardback,700,215);
@@ -54,6 +56,7 @@ class Card
       image(cardback,700,515);
       image(cardback,950,515);
       imageMode(CENTER);
+      */
       
     }
   }

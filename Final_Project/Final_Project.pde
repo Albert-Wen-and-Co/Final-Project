@@ -20,12 +20,13 @@ PImage temple5;
 PImage goaltemple;
 
 
-int gameScreen=0; //the correct screen is determined by the value of the variable, 0= initial screen, 1=game screen, 2=game over screen
+int gameScreen=0; //the correct screen is determined by the value of the variable, 0= initial screen, 1=game screen, 2=game over screen...
 
 void setup() {
   size(1200, 800);//set up canvas size
 
-  font=loadFont("HVDBodedo.vlw"); //load fonts and images
+  //load fonts and images
+  font=loadFont("HVDBodedo.vlw"); 
   character=loadImage("character down.png");
   character.resize(60, 50);
   logo=loadImage("mapquest(HVD).png");
@@ -50,8 +51,9 @@ void setup() {
   people[1] = new NPC(815, 275);
   people[2] = new NPC(255, 340);
   people[3] = new NPC(710, 595);
-  people[4] = new NPC(425, 765);
+  people[4] = new NPC(225, 765);
   keys = loadImage("key.png");
+  
   for (int i = 0; i < possibleItems.length; i++)
   {
     possibleItems[i] = new Item(keys);
@@ -61,7 +63,7 @@ void setup() {
 
 void draw()
 {
-  if (gameScreen == 0) { //if the value of variable is #, then the coresponding screen will show
+  if (gameScreen == 0) { //if the value of variable is #, then the coresponding screen/game will show
     initScreen();
   } else if (gameScreen == 1) {
     mainScreen();
@@ -80,6 +82,7 @@ void draw()
 }
 
 void initScreen() { 
+  //create welcome screen
   fill(255);
   rect(0, 0, 1200, 800);
   image(logo, width/2, 300);
@@ -104,12 +107,16 @@ void mainScreen(){
   image(map, width/2, height/2);
   fill(150);
   rect(1050, 0, width, height);
+  fill(0);
+  textFont(font,20);
+  text("inventory", 1125,30);
   
+  //display temple images at specific locations
   image(temple1, 115,90);
   image(temple2, 815,275);
   image(temple3, 255,340);
   image(temple4, 710,595);
-  image(temple5, 425,765);
+  image(temple5, 225,765);
   image(goaltemple, 950, 475);
 
   p.display();
@@ -130,6 +137,7 @@ void mainScreen(){
       {
         switch(i)
         {
+          //display text for each different text when the player is in contact with each certain NPC
           case 0:
             textAlign(LEFT,TOP);
             fill(255);
@@ -137,7 +145,7 @@ void mainScreen(){
             text("Test your memory and ability in this challenge. Press z to accept.",8,8);
             if (key == 'z')
             {
-              p.loc.set(width/2, height/2);
+              p.loc.set(width/2, height/2); //if the key is pressed, the card game will begin
               cardsSetup();
               gameScreen = 3;
             }
@@ -149,7 +157,7 @@ void mainScreen(){
             text("I bet you can't dodge these objects! Press z to accept.",8,8);
             if (key == 'z')
             {
-              p.loc.set(width/2, height/2);
+              p.loc.set(width/2, height/2); //if the key is pressed, the bull game will begin
               bs.gameScreenB = 0;
               gameScreen = 4;
             }
@@ -161,13 +169,14 @@ void mainScreen(){
             text("Do you think you have fast fingers? Press z to accept.",8,8);
             if (key == 'z')
             {
-              p.loc.set(width/2, height/2);
+              p.loc.set(width/2, height/2); //if the key is pressed, the speed game will begin
               gameScreen = 5;
             }
             break;
         }
       }
-      else {
+      else { 
+        //display this text when a key is to be added to the player's inventory
         textAlign(LEFT,TOP);
         fill(255);
         textSize(18);
@@ -196,6 +205,7 @@ boolean hasItem(int index)
 }
 
 void gameOverScreen() {
+  //display game over screen
   textFont(font,45);
   fill(255,0,0);
   text("you completed the quest!", width/2, 400);
@@ -208,6 +218,7 @@ void startGame() { //set variable to start the game
 }
 
 void mouseClicked() {
+  //clicking method for card game
   if (gameScreen==0) {
     startGame();
   } else if (gameScreen == 3) {
@@ -235,15 +246,16 @@ void mouseClicked() {
     
     if(millis() - fStartTime > 10000)
     {
-      gameScreen = 1;
+      gameScreen = 1; //when the timer runs out, the player will return to the main screen
     }
   }
-  if(gameScreen == 4)
+  //method to start bull game
+  if(gameScreen == 4) 
   {
-    if (bs.gameScreenB==0) {
+    if (bs.gameScreenB==0) { 
       bs.startGameB();
     }
-    else if (bs.gameScreenB==2) {
+    else if (bs.gameScreenB==2) { //at the end of the bull game, the player will return to the main screen
       gameScreen = 1;
     }
   }
