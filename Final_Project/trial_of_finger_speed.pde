@@ -11,6 +11,9 @@ void fSetup()
   textAlign(CENTER);
   fill(255);
   textSize(55);
+  fScore =  0;
+  fTime = 10;
+  fStart = false;
 }
 void fDraw() {
   background(205, 255, 153);
@@ -19,8 +22,6 @@ void fDraw() {
     fStartTime = millis();
     fill(26, 51, 0);
     text("Time Alloted: 10 seconds", width/2, height*3/4);
-    fScore =  0;
-    fTime = 10;
   }
   fill(26, 51, 0);
   text("Goal: "+ fGoal, width/2, height*1/4);
