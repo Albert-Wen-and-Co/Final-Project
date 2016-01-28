@@ -110,7 +110,7 @@ class Bullsystem {
       textFont(font, 45);
       textAlign(CENTER);
       fill(0);
-      text("Congrats! You have recieved a KEY!", width/2, height/2);
+      text("Congrats! You have received a KEY!", width/2, height/2);
       if (!hasItem(1))
       {
         inventory.add(possibleItems[1]);
