@@ -1,9 +1,9 @@
-class Charact {
-  PVector loc;
+class Charact {//class for the controllable character
+  PVector loc;//declare variables
   float diam;
   PImage cha = new PImage();
 
-  Charact(float x, float y) {
+  Charact(float x, float y) {//construct with location, diameter, and image
     loc = new PVector (x, y);
     diam = 40;
     cha = loadImage("character down.png");

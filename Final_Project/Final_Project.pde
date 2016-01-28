@@ -20,7 +20,7 @@ PImage temple5;
 PImage goaltemple;
 
 
-int gameScreen=0; //the correct screen is determined by the value of the variable, 0= initial screen, 1=game screen, 2=game over screen
+int gameScreen=0; //the correct screen is determined by the value of the variable, 0= initial screen, 1=game screen, 2=game over screen, 3-7=minigame screens
 
 void setup() {
   size(1200, 800);//set up canvas size
@@ -53,7 +53,7 @@ void setup() {
   people[4] = new NPC(425, 795, temple5);
   people[5] = new NPC(955, 445, goaltemple);
   keys = loadImage("key.png");
-  for (int i = 0; i < possibleItems.length; i++)
+  for (int i = 0; i < possibleItems.length; i++)//initialize all of the different items with the key image
   {
     possibleItems[i] = new Item(keys);
   }
@@ -62,7 +62,7 @@ void setup() {
 
 void draw()
 {
-  if (gameScreen == 0) //if the value of variable is #, then the coresponding screen will show
+  if (gameScreen == 0) //call the appropriate draw function for the current game screen
   {
     initScreen();
   }
@@ -96,7 +96,7 @@ void draw()
   }
 }
 
-void initScreen() { 
+void initScreen() { //the first screen, the instructions before the game starts
   background(255);
   image(logo, width/2, 300);
   fill(0);
@@ -110,7 +110,7 @@ void initScreen() {
   textAlign(CENTER);
 }
 
-void mainScreen(){
+void mainScreen(){//the main screen where you move around the map and interact with objects
   background(0);//draw the background and sidebar
   image(map, width/2, height/2);
   fill(150);
@@ -121,27 +121,27 @@ void mainScreen(){
     people[i].display();
   }
 
-  p.display();
+  p.display();//display and update the position of the player
   p.move();
 
-  for (int i = 0; i < people.length; i++)//check if the player is in contact with an NPC
+  for (int i = 0; i < people.length; i++)//for every NPC
   {
-    if (p.contact(people[i].loc))
+    if (p.contact(people[i].loc))//check if the player is in contact with that NPC
     {
-      fill(0);
+      fill(0);//display the dialogue box
       rect(0, 0, width, 50);
       textAlign(LEFT,TOP);
       fill(255);
       textSize(16);
-      if (!hasItem(i))
+      if (!hasItem(i))//display dialogue when you don't have that NPC's item
       {
         switch(i)
         {
           case 0:
-            text("Test your memory and ability in this challenge. Press z to accept.",8,8);
-            if (key == 'z')
+            text("Test your memory and ability in this challenge. Press z to accept.",8,8);//show dialogue
+            if (key == 'z')//if you accept the challenge
             {
-              cardsSetup();
+              cardsSetup();//start the minigame
               gameScreen = 3;
             }
             break;
@@ -192,12 +192,12 @@ void mainScreen(){
             }
         }
       }
-      else
+      else//show dialogue when you do have that NPC's item
       {
         switch(i)
         {
           case 0:
-            text("Wow! You are so smart and intelligent and smart and smart. You may take my key.",8,8);
+            text("Wow! You are so smart and intelligent and smart and smart. You may take my key.",8,8);//show dialogue
             break;
           case 1:
             text("I am impressed by your skills! Have a key!",8,8);
@@ -214,14 +214,14 @@ void mainScreen(){
       }
     }
   }
-  for (int i = 0; i < inventory.size(); i++)
+  for (int i = 0; i < inventory.size(); i++)//display each item that you have in your inventory
   {
     Item tempItem = inventory.get(i);
     tempItem.display(1125, 100 + 90 * i);
   }
 }
 
-boolean hasItem(int index)
+boolean hasItem(int index)//function to check if an item is in your inventory
 {
   if(index == 5)
   {
@@ -238,7 +238,7 @@ boolean hasItem(int index)
   return false;
 }
 
-void gameOverScreen() {
+void gameOverScreen() {//screen after you open the locked temple
   background(255);
   textFont(font,45);
   fill(255,0,0);
@@ -247,7 +247,7 @@ void gameOverScreen() {
   textAlign(CENTER);
 }
 
-void startGame() { //set variable to start the game
+void startGame() { //function to set variable to start the game
   gameScreen=1;
 }
 
@@ -258,7 +258,7 @@ void mouseClicked() {
   }
   else if (gameScreen == 3)//if you are in the card game
   {
-    for (int i = cards.size()-1; i >=0; i--) {
+    for (int i = cards.size()-1; i >=0; i--) {//check every card
       Card c = cards.get(i);
       if (c.touches(mouseX, mouseY)) { //flips card when touching
         if (moves%2==0) { //if two cards already up, flips them over before continuing.
@@ -289,7 +289,7 @@ void mouseClicked() {
   }
   else if(gameScreen == 4)//if you are in the dodging game
   {
-    if (bs.gameScreenB==0) {
+    if (bs.gameScreenB==0) {//moves to the next screen
       bs.startGameB();
     }
     else if (bs.gameScreenB==2) {
@@ -298,16 +298,16 @@ void mouseClicked() {
   }
   else if(gameScreen == 6)//if you are in the riddle game
   {
-    switch(riddleNumber)
+    switch(riddleNumber)//check which riddle you are on
     {
       case 1:
-        if(mouseX >= 400 && mouseX <= 800 && mouseY >= 400 && mouseY <= 600)
+        if(mouseX >= 400 && mouseX <= 800 && mouseY >= 400 && mouseY <= 600)//if your mouse is in the correct answer
         {
-          riddleNumber = 2;
+          riddleNumber = 2;//move to next riddle
         }
-        else if(mouseX >= 0 && mouseX <= 800 && mouseY >= 400 && mouseY <= 800)
+        else if(mouseX >= 0 && mouseX <= 800 && mouseY >= 400 && mouseY <= 800)//if your mouse is in another answer
         {
-          riddleNumber = 5;
+          riddleNumber = 5;//move to loss screen
         }
         break;
       case 2:
@@ -330,16 +330,16 @@ void mouseClicked() {
           riddleNumber = 5;
         }
         break;
-      case 4:
+      case 4://if you are on the win or the loss screen
       case 5:
-        gameScreen = 1;
+        gameScreen = 1;//go back to the main screen
     }
   }
-  else if(gameScreen == 7)
+  else if(gameScreen == 7)//if you are in the balance game
   {
-    if(balanceTime <= 0 || balanceX < -400 || balanceX > 400)
+    if(balanceTime <= 0 || balanceX < -400 || balanceX > 400)//if the game has ended
     {
-      gameScreen = 1;
+      gameScreen = 1;//go back to the main screen
     }
   }
 }

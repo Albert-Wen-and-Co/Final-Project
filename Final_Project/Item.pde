@@ -1,12 +1,10 @@
-class Item
+class Item//class for items which you collect from NPCs
 {
-  boolean have; //boolean to see if the player obtained the item
-  PImage appearance;
+  PImage appearance;//declare image variable
   
-  Item(PImage a)
+  Item(PImage a)//construct with the image
   {
     appearance = a;
-    have = false;
   }
   
   void display(float x, float y) //display the key image

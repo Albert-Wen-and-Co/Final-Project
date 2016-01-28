@@ -1,10 +1,10 @@
-class NPC
+class NPC//class for NPCs which host minigames and give items
 {
-  PVector loc;
+  PVector loc;//declare variables
   float diam;
   PImage appearance;
   
-  NPC(float a, float b, PImage im)
+  NPC(float a, float b, PImage im)//construct with location, diameter, and image
   {
     loc = new PVector(a, b);
     diam = 40;
@@ -12,7 +12,7 @@ class NPC
   }
   
   void display() 
-  //display locations as ellipses
+  //display image at the location
   {
     image(appearance, loc.x, loc.y);
   }
