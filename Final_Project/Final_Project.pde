@@ -300,6 +300,7 @@ void mouseClicked() {
     }
     else if (bs.gameScreenB==2) {
       gameScreen = 1;
+      bs.gameScreenB = 0;
     }
   }
   else if(gameScreen == 6)//if you are in the riddle game

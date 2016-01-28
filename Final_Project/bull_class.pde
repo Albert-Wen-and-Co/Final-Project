@@ -29,8 +29,8 @@ class Bulls {
   }
 
   void reset() {
-    //return the lantern back to the top of the screen at a random location.
-    loc.set(random(width), 0);
+    //return the lantern back to the top portion of the screen at a random location.
+    loc.set(random(width), random(height/3));
     vel.set(0, .5);
     acc=.1;
   }

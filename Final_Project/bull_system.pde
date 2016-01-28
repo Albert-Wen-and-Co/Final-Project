@@ -55,6 +55,12 @@ class Bullsystem {
     t = 1;
     interval=30;
     startTime = millis();
+    //if the game has been lost previously, this will make it so that
+    //the lanterns are placed in a position similar to how they would be at the start
+    for (int i=0; i<count; i++) {
+      Bulls c = bull.get(i);
+      c.reset();
+    }
   }
 
   void mainScreenB() {
@@ -83,8 +89,8 @@ class Bullsystem {
 
     image(bullcharacter, mouseX, mouseY);
 
-    for (int i=0; i<count; i++) { //create an array
-      Bulls b=bull.get(i); //get the lanterns from the array
+    for (int i=0; i<count; i++) {
+      Bulls b=bull.get(i); //get the lanterns from the arraylist
       b.fall();   //make the lantern fall to the bottom of the screen
       b.display();  //display the lantern
       if (b.isInContactWith(mouse)) {  //check to see if the lantern is in contact with the character
