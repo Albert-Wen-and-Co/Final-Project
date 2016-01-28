@@ -24,7 +24,7 @@ void cardsDraw() {
   //rect(350,150,450,350);
   fill(0);
   textFont(font,35);
-  text("match up all the cards!",width/2, 720);
+  text("Match up all the cards!",width/2, 720);
   textAlign(CENTER);
   
   //display of cards
