@@ -1,6 +1,6 @@
 class Item
 {
-  boolean have;
+  boolean have; //boolean to see if the player obtained the item
   PImage appearance;
   
   Item(PImage a)
@@ -9,7 +9,7 @@ class Item
     have = false;
   }
   
-  void display(float x, float y)
+  void display(float x, float y) //display the key image
   {
     image(appearance, x, y, 50, 50);
   }
