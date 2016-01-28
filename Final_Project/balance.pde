@@ -37,10 +37,10 @@ void balanceDraw()
       switch(keyCode)
       {
       case LEFT:
-        balanceX -= 4;
+        balanceX -= 3;
         break;
       case RIGHT:
-        balanceX += 4;
+        balanceX += 3;
       }
     }
   }

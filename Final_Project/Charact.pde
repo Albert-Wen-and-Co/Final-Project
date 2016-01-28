@@ -27,7 +27,7 @@ class Charact {
         case UP: //if the up arrow key is pressed, the character will move and be facing up
           if (loc.y > diam/2)
           {
-            loc.y -= 6;
+            loc.y -= 5;
             cha = loadImage("character up.png");
             cha.resize(60,50);
           }
@@ -35,7 +35,7 @@ class Charact {
         case DOWN: //if the down arrow key is pressed, the character will move and be facing down
           if (loc.y < height - diam/2)
           {
-            loc.y += 6;
+            loc.y += 5;
             cha = loadImage("character down.png");
             cha.resize(60,50);
           }
@@ -43,7 +43,7 @@ class Charact {
         case LEFT: //if the left arrow key is pressed, the character will move and be facing left
           if (loc.x > diam/2)
           {
-            loc.x -= 6;
+            loc.x -= 5;
             cha = loadImage("character left.png");
             cha.resize(50,60);
           }
@@ -51,7 +51,7 @@ class Charact {
         case RIGHT: //if the right arrow key is pressed, the character will move and be facing right
           if (loc.x < 1050 - diam/2)
           {
-            loc.x += 6;
+            loc.x += 5;
             cha = loadImage("character right.png");
             cha.resize(50,60);
           }

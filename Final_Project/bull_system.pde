@@ -6,7 +6,7 @@ class Bullsystem {
   //variables for timer
   String time;
   int t;
-  int count=35;
+  int count=25;
   int interval;
   PVector mouse;
   float startTime=0;
