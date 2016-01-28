@@ -115,6 +115,9 @@ void mainScreen(){
   image(map, width/2, height/2);
   fill(150);
   rect(1050, 0, width, height);
+  fill(0);
+  textSize(20);
+  text("inventory",1125,20);
 
   for (int i = 0; i < people.length; i++)//draw each NPC
   {

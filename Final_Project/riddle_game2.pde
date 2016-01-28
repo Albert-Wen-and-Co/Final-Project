@@ -7,35 +7,42 @@ void riddleSetup() {
 
 void riddleDraw() {
 
-  background(255);
-  
+  background(203, 179, 255);
+  fill(150, 102, 255);
+  rect(0,0,1200,400);
   fill(0);
 
   textSize(32);
   textAlign(CENTER);
   if(riddleNumber == 1)
   {
-    text("12 * 13 =", 600, 150);
-    text("121", 200, 500);
-    text("156", 600, 500);
-    text("173", 200, 700);
-    text("182", 600, 700);
+    text("See if you can complete this sequence:", 600, 150);
+    text("1=3, 2=3, 3=5, 4=4, 5=4, 6=3,", 600, 200);
+    text("7=5, 8=5, 9=4, 10=3, 11=?, 12=?",600,250);
+    text("13,12", 200, 500);
+    text("6,6", 600, 500); //this is the correct answer
+    text("10, 24", 200, 700);
+    text("6,5", 600, 700);
   }
   else if(riddleNumber == 2)
   {
-    text("9 * 9 =", 600, 150);
-    text("121", 200, 500);
-    text("81", 600, 500);
-    text("173", 200, 700);
-    text("182", 600, 700);
+    text("A man fell into a hole that was 14.5 feet deep.", 600, 150);
+    text("He could jump three feet, but he slid",600,200);
+    text("a foot everytime he jumped",600,250);
+    text("How many jumps does it take for him to escape the hole?",600,300);
+    text("8", 200, 500);
+    text("7", 600, 500); //this is the correct answer
+    text("this is a trick!", 200, 700);
+    text("9", 600, 700);
   }
   else if(riddleNumber == 3)
   {
-    text("2 * 2 =", 600, 150);
-    text("121", 200, 500);
-    text("4", 600, 500);
-    text("173", 200, 700);
-    text("182", 600, 700);
+    text("What is the next number in this series?", 600, 150);
+    text("4, 6, 12, 18, 30, 42, 60, 72, 102, 108,...",600,200);
+    text("114", 200, 500);
+    text("138", 600, 500); //this is the correct answer
+    text("120", 200, 700);
+    text("136", 600, 700);
   }
   else if(riddleNumber == 4)
   {
@@ -48,7 +55,7 @@ void riddleDraw() {
   }
   else if(riddleNumber == 5)
   {
-    text("Your answer was wrong!", 600, 150);
+    text("Your answer was wrong! Try again!", 600, 150);
     p.loc.set(width/2, height/2);
   }
 }
