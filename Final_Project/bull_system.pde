@@ -1,12 +1,11 @@
 class Bullsystem {
-
-  ArrayList <Bulls> bull =new ArrayList<Bulls>();
+  ArrayList <Bulls> bull =new ArrayList<Bulls>(); //create an ArrayList
   int scb;
   
   //variables for timer
   String time;
   int t;
-  int count=25;
+  int count=40;
   int interval;
   PVector mouse;
   float startTime=0;
@@ -14,7 +13,6 @@ class Bullsystem {
   PImage bullcharacter;
   
   int gameScreenB=0;
-
 
 
   Bullsystem() { 
@@ -72,7 +70,7 @@ class Bullsystem {
     text(scb, 610, 770); //display the score
 
     //create a timer
-    fill(255);
+    fill(0);
     textSize(15);
     textAlign(CENTER);
     text("Time Remaining:", 520, 720);
@@ -99,7 +97,7 @@ class Bullsystem {
     }
 
     
-    if(t <= 0 || scb <= -5)
+    if(t <= 0 || scb <= -5) //if the timer runs out OR the score is less than -5, give gameScreenB a value of 2 and display game over screen
 
     {
       gameScreenB=2;
@@ -107,12 +105,11 @@ class Bullsystem {
   }
 
 
-  void gameOverScreenB() {
+  void gameOverScreenB() { //if the players score is greater than or equal to -5, add a key to their inventory
     if (scb > -5) {
-
       textFont(font, 45);
       textAlign(CENTER);
-      fill(255);
+      fill(0);
       text("Congrats! You have recieved a KEY!", width/2, height/2);
       if (!hasItem(1))
       {
@@ -120,7 +117,7 @@ class Bullsystem {
       }
 
     } else { 
-      p.loc.set(width/2, height/2);
+      p.loc.set(width/2, height/2); //if the score is less than -5. display a sorry screen and return the player back to the main screen
       text("Sorry. Try again another time.", width/2, height/2);
 
     }
